@@ -24,7 +24,112 @@
   <!-- JSON-LD schema added in SEO task -->
 
   <style>
-    /* Design tokens + global styles added in next task */
+    /* =============================================================
+       DESIGN TOKENS
+       ============================================================= */
+    :root {
+      --ink:         #1A2F25;
+      --ink-soft:    #4a5a51;
+      --ink-faint:   #8a968f;
+      --paper:       #EEE7D6;
+      --paper-warm:  #E6DEC7;
+      --paper-deep:  #1A2F25;
+      --line:        #C9BFA5;
+      --line-fine:   #D8CEB6;
+      --accent:      #C66B5D;
+      --accent-cool: #4a6b8a;
+      --accent-green:#5E7A60;
+    }
+
+    /* =============================================================
+       RESET + BASE
+       ============================================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Paper grain — fixed, behind content */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.5;
+      mix-blend-mode: multiply;
+      z-index: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.15 0 0 0 0 0.1 0 0 0 0.12 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+
+    ::selection { background: var(--accent); color: var(--paper); }
+
+    /* =============================================================
+       LAYOUT CONTAINER
+       ============================================================= */
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* =============================================================
+       ACCESSIBILITY
+       ============================================================= */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: 500;
+      z-index: 1000;
+      transition: top 200ms ease;
+    }
+    .skip-link:focus { top: 16px; }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* =============================================================
+       TYPOGRAPHY BASE (specific sections override later)
+       ============================================================= */
+    h1, h2, h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    p { max-width: 62ch; }
+
+    a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+    a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
