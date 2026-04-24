@@ -749,6 +749,99 @@
       .secondary-intro { margin-top: 80px; }
       section.article { padding: 48px 0; }
     }
+
+    /* =============================================================
+       FULL-BLEED CTA
+       ============================================================= */
+    section.cta {
+      background: var(--paper-deep);
+      color: var(--paper);
+      padding: 120px 0;
+      position: relative;
+      margin-top: 80px;
+    }
+
+    section.cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0 0.7 0 0 0 0.1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    .cta-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(238, 231, 214, 0.55);
+      margin-bottom: 24px;
+    }
+
+    .cta-title {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      font-weight: 300;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--paper);
+      max-width: 18ch;
+      margin: 0 0 32px;
+    }
+
+    .cta-title em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    .cta-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: rgba(238, 231, 214, 0.75);
+      max-width: 48ch;
+      margin-bottom: 48px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 32px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      font-size: 17px;
+      text-decoration: none;
+      transition: all 240ms cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: var(--accent);
+      color: var(--paper);
+    }
+
+    .btn-primary .arrow {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 20px;
+    }
+
+    @media (max-width: 720px) {
+      section.cta { padding: 72px 0; margin-top: 48px; }
+    }
   </style>
 </head>
 <body>
@@ -1097,7 +1190,14 @@
   </div>
 
   <section class="cta" id="intake" aria-labelledby="cta-title">
-    <!-- dark CTA block, escapes the .wrap container via margin trick (Task 9) -->
+    <div class="cta-wrap">
+      <p class="cta-eyebrow">Vrijblijvende intake · 30 minuten</p>
+      <h2 id="cta-title" class="cta-title">Herken je <em>jezelf</em> in dit verhaal?</h2>
+      <p class="cta-body">In dertig minuten kijken we samen of deze aanpak bij jou past. Geen verkoop, geen verplichting. Alleen kijken.</p>
+      <a href="https://www.psychosomatischefysio.nl/neem-contact-op" target="_blank" rel="noopener" class="btn-primary">
+        Plan een intake <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
   </section>
 
   <div class="wrap">
