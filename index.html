@@ -130,6 +130,114 @@
 
     a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
     a:hover { color: var(--accent); }
+
+    /* =============================================================
+       MASTHEAD
+       ============================================================= */
+    .masthead {
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--line-fine);
+    }
+
+    .brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 22px;
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      color: var(--ink);
+      user-select: none;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+      transform: translateY(-3px);
+      animation: breathe 4s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translateY(-3px) scale(1);   opacity: 1;   }
+      50%      { transform: translateY(-3px) scale(1.4); opacity: 0.7; }
+    }
+
+    .masthead-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    /* =============================================================
+       HERO
+       ============================================================= */
+    .hero {
+      padding: 48px 0 80px;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--ink-faint);
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-variation-settings: "opsz" 144, "SOFT" 30;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.04;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      max-width: 16ch;
+      margin-bottom: 24px;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-lead {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      color: var(--ink-soft);
+      max-width: 48ch;
+      margin-bottom: 56px;
+    }
+
+    /* On mobile, tighten hero */
+    @media (max-width: 720px) {
+      .masthead-meta { display: none; }
+      .hero { min-height: 80vh; padding-top: 24px; padding-bottom: 48px; }
+    }
   </style>
 </head>
 <body>
@@ -139,13 +247,20 @@
   <div class="wrap">
 
     <header class="masthead" role="banner">
-      <!-- brand wordmark + practitioner attribution (Task 3) -->
+      <div class="brand" aria-label="zenuwstelsel.com">
+        vagus<span class="brand-dot" aria-hidden="true"></span>
+      </div>
+      <div class="masthead-meta">Jaap Leemeijer · BIG 09925473804</div>
     </header>
 
     <main id="main">
 
       <section class="hero" aria-labelledby="hero-title">
-        <!-- eyebrow, H1, lead, test component (Tasks 3, 4, 6) -->
+        <p class="hero-eyebrow">Zelftest · 1 minuut · geen mail</p>
+        <h1 id="hero-title" class="hero-title">In welke <em>stand</em> staat jouw zenuwstelsel?</h1>
+        <p class="hero-lead">Zes vragen. Direct een patroon en oefeningen die daarbij passen. Daaronder — als je het wil lezen — waar het op gebaseerd is.</p>
+
+        <!-- test component added in Task 4 -->
       </section>
 
       <div class="secondary-intro">
