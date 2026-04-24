@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Scoring tests — zenuwstelsel.com</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 24px; max-width: 800px; margin: 0 auto; }
+    .test { padding: 8px 12px; margin: 4px 0; border-left: 4px solid; }
+    .pass { background: #e8f5e9; border-color: #2e7d32; color: #1b5e20; }
+    .fail { background: #ffebee; border-color: #c62828; color: #b71c1c; }
+    .summary { margin: 24px 0; padding: 16px; font-weight: 600; }
+    code { background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, monospace; }
+  </style>
+</head>
+<body>
+  <h1>Scoring tests: <code>bepaalStand()</code></h1>
+  <div id="results"></div>
+  <div class="summary" id="summary"></div>
+
+  <script>
+    function bepaalStand(answers) {
+      const counts = { A: 0, B: 0, C: 0 };
+      for (const a of answers) counts[a]++;
+
+      if (counts.C >= 4) return 'gereguleerd';
+      if (counts.A >= 4) return 'activatie';
+      if (counts.B >= 4) return 'uitschakeling';
+      if (counts.A >= 2 && counts.B >= 2) return 'wisselend';
+      if (counts.A > counts.B) return 'activatie';
+      if (counts.B > counts.A) return 'uitschakeling';
+      return 'wisselend';
+    }
+
+    // ====================================================
+    // Test runner
+    // ====================================================
+    const results = document.getElementById('results');
+    const summary = document.getElementById('summary');
+    let passed = 0, failed = 0;
+
+    function test(label, answers, expected) {
+      const actual = bepaalStand(answers);
+      const ok = actual === expected;
+      const el = document.createElement('div');
+      el.className = 'test ' + (ok ? 'pass' : 'fail');
+      el.innerHTML = `${ok ? '✓' : '✗'} <strong>${label}</strong> · input: <code>[${answers.join(',')}]</code> · expected: <code>${expected}</code> · got: <code>${actual}</code>`;
+      results.appendChild(el);
+      ok ? passed++ : failed++;
+    }
+
+    // ====================================================
+    // Test cases (derived from existing zelftest-zenuwstelsel.html)
+    // ====================================================
+
+    // 4+ C → gereguleerd (regardless of remaining)
+    test('six Cs → gereguleerd',          ['C','C','C','C','C','C'], 'gereguleerd');
+    test('4 Cs + 2 As → gereguleerd',     ['C','C','C','C','A','A'], 'gereguleerd');
+    test('4 Cs + 2 Bs → gereguleerd',     ['C','C','C','C','B','B'], 'gereguleerd');
+
+    // 4+ A → activatie
+    test('six As → activatie',            ['A','A','A','A','A','A'], 'activatie');
+    test('4 As + 2 Bs → activatie',       ['A','A','A','A','B','B'], 'activatie');
+    test('4 As + 2 Cs → activatie',       ['A','A','A','A','C','C'], 'activatie');
+
+    // 4+ B → uitschakeling
+    test('six Bs → uitschakeling',        ['B','B','B','B','B','B'], 'uitschakeling');
+    test('4 Bs + 2 As → uitschakeling',   ['B','B','B','B','A','A'], 'uitschakeling');
+    test('4 Bs + 2 Cs → uitschakeling',   ['B','B','B','B','C','C'], 'uitschakeling');
+
+    // 2+ A AND 2+ B (no C dominance) → wisselend
+    test('3A + 3B → wisselend',           ['A','A','A','B','B','B'], 'wisselend');
+    test('2A + 2B + 2C (no C ≥ 4) → wisselend', ['A','A','B','B','C','C'], 'wisselend');
+    test('3A + 2B + 1C → wisselend',      ['A','A','A','B','B','C'], 'wisselend');
+
+    // A > B with no 4+ dominance → activatie
+    test('3A + 1B + 2C → activatie',      ['A','A','A','B','C','C'], 'activatie');
+    test('2A + 1B + 3C (2As edge: no wisselend) → activatie', ['A','A','B','C','C','C'], 'activatie');
+
+    // B > A with no 4+ dominance → uitschakeling
+    test('3B + 1A + 2C → uitschakeling',  ['B','B','B','A','C','C'], 'uitschakeling');
+    test('2B + 1A + 3C → uitschakeling',  ['B','B','A','C','C','C'], 'uitschakeling');
+
+    // Tied A == B, no dominance → wisselend (fallback)
+    test('2A + 2B + 2C tied → wisselend', ['A','A','B','B','C','C'], 'wisselend');
+
+    // ====================================================
+    // Summary
+    // ====================================================
+    summary.className = 'summary ' + (failed === 0 ? 'pass' : 'fail');
+    summary.textContent = `${passed} passed · ${failed} failed`;
+  </script>
+</body>
+</html>
