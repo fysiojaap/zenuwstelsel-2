@@ -842,6 +842,97 @@
     @media (max-width: 720px) {
       section.cta { padding: 72px 0; margin-top: 48px; }
     }
+
+    /* =============================================================
+       FAQ
+       ============================================================= */
+    section.faq-wrap {
+      padding: 80px 0;
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 48px;
+    }
+
+    section.faq-wrap .chapter-label {
+      grid-column: 1;
+      position: sticky;
+      top: 32px;
+    }
+
+    section.faq-wrap .faq-list { grid-column: 2; }
+
+    section.faq-wrap h2 {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: "opsz" 90, "SOFT" 30;
+      font-weight: 400;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      margin: 0 0 24px;
+    }
+
+    details.faq {
+      border-top: 1px solid var(--line-fine);
+      padding: 24px 0;
+    }
+
+    details.faq:last-child { border-bottom: 1px solid var(--line-fine); }
+
+    details.faq summary {
+      font-family: 'Fraunces', serif;
+      font-variation-settings: "opsz" 60;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--ink);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 24px;
+    }
+
+    details.faq summary::-webkit-details-marker { display: none; }
+
+    details.faq summary::after {
+      content: '+';
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 32px;
+      color: var(--accent);
+      transition: transform 240ms ease;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    details.faq[open] summary::after { transform: rotate(45deg); }
+
+    details.faq p {
+      margin-top: 16px;
+      font-size: 16px;
+      color: var(--ink-soft);
+      max-width: 62ch;
+    }
+
+    /* =============================================================
+       FOOTER
+       ============================================================= */
+    footer.site-foot {
+      padding: 48px 0 72px;
+      border-top: 1px solid var(--line-fine);
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: var(--ink-faint);
+    }
+
+    @media (max-width: 720px) {
+      section.faq-wrap { grid-template-columns: 1fr; gap: 16px; padding: 48px 0; }
+      section.faq-wrap .chapter-label { position: static; grid-column: 1; }
+      section.faq-wrap .faq-list { grid-column: 1; }
+
+      footer.site-foot { flex-direction: column; gap: 24px; padding: 32px 0 48px; }
+    }
   </style>
 </head>
 <body>
@@ -1203,11 +1294,40 @@
   <div class="wrap">
 
     <section class="faq-wrap" aria-labelledby="faq-title">
-      <!-- § 06 Vragen (Task 10) -->
+      <div class="chapter-label">§ 06 &nbsp; Vragen</div>
+      <div class="faq-list">
+        <h2 id="faq-title">Veelgestelde vragen</h2>
+
+        <details class="faq" open>
+          <summary>Wat is een ontregeld zenuwstelsel precies?</summary>
+          <p>Een autonoom zenuwstelsel dat te vaak en te lang in vecht-vlucht of bevriezing zit, en steeds slechter terugschakelt naar rust. Dat veroorzaakt klachten als hartkloppingen, slapeloosheid, uitputting of een 'leeg' gevoel.</p>
+        </details>
+
+        <details class="faq">
+          <summary>Kan ik mijn nervus vagus zelf trainen?</summary>
+          <p>Tot op zekere hoogte ja — verlengde uitademing en regelmatige ontspanningsmomenten beïnvloeden je kalmtesysteem aantoonbaar. Maar bij langdurige ontregeling is begeleiding meestal effectiever dan zelf-experimenteren.</p>
+        </details>
+
+        <details class="faq">
+          <summary>Werkt een ijsbad echt voor de nervus vagus?</summary>
+          <p>Het effect wordt online overdreven. Voor wie al ontregeld is, kan koude exposure zelfs averechts werken. Begin altijd met ademhaling.</p>
+        </details>
+
+        <details class="faq">
+          <summary>Wordt de behandeling vergoed?</summary>
+          <p>Psychosomatische fysiotherapie wordt vanaf 18 jaar vergoed via de aanvullende verzekering. Onder de 18 via de basisverzekering. Check je polis.</p>
+        </details>
+
+        <details class="faq">
+          <summary>Hoeveel sessies heb ik gemiddeld nodig?</summary>
+          <p>De meeste trajecten duren 8 tot 16 sessies, verspreid over 3 tot 6 maanden. Bij de intake schatten we samen wat passend is.</p>
+        </details>
+      </div>
     </section>
 
     <footer class="site-foot" role="contentinfo">
-      <!-- footer (Task 10) -->
+      <div>zenuwstelsel.com · een zenuwstelsel-check</div>
+      <div>Jaap Leemeijer · BIG: 09925473804 · Psychosomatische fysiotherapie</div>
     </footer>
 
   </div>
