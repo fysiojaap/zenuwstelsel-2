@@ -21,7 +21,84 @@
 
   <!-- Favicon (added in later task) -->
 
-  <!-- JSON-LD schema added in SEO task -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://zenuwstelsel.com/#page",
+        "url": "https://zenuwstelsel.com/",
+        "name": "In welke stand staat jouw zenuwstelsel?",
+        "description": "Zelftest voor een ontregeld zenuwstelsel. Zes vragen, direct antwoord met oefeningen. Plus wat wél en wat níet werkt volgens onderzoek.",
+        "inLanguage": "nl-NL",
+        "about": {
+          "@type": "AnatomicalStructure",
+          "name": "Nervus vagus",
+          "alternateName": "Vagus nerve"
+        },
+        "mainEntity": { "@id": "https://zenuwstelsel.com/#faq" },
+        "author": { "@id": "https://zenuwstelsel.com/#practitioner" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://zenuwstelsel.com/#practitioner",
+        "name": "Jaap Leemeijer",
+        "jobTitle": "BIG-geregistreerd Psychosomatisch Fysiotherapeut",
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "name": "BIG: 09925473804"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://zenuwstelsel.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wat is een ontregeld zenuwstelsel precies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Een autonoom zenuwstelsel dat te vaak en te lang in vecht-vlucht of bevriezing zit, en steeds slechter terugschakelt naar rust. Dat veroorzaakt klachten als hartkloppingen, slapeloosheid, uitputting of een 'leeg' gevoel."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Kan ik mijn nervus vagus zelf trainen?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tot op zekere hoogte ja — verlengde uitademing en regelmatige ontspanningsmomenten beïnvloeden je kalmtesysteem aantoonbaar. Maar bij langdurige ontregeling is begeleiding meestal effectiever dan zelf-experimenteren."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Werkt een ijsbad echt voor de nervus vagus?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Het effect wordt online overdreven. Voor wie al ontregeld is, kan koude exposure zelfs averechts werken. Begin altijd met ademhaling."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Wordt de behandeling vergoed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Psychosomatische fysiotherapie wordt vanaf 18 jaar vergoed via de aanvullende verzekering. Onder de 18 via de basisverzekering. Check je polis."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Hoeveel sessies heb ik gemiddeld nodig?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "De meeste trajecten duren 8 tot 16 sessies, verspreid over 3 tot 6 maanden. Bij de intake schatten we samen wat passend is."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <style>
     /* =============================================================
