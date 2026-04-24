@@ -717,7 +717,91 @@
   </div>
 
   <script>
-    // Test behavior added in Task 6
+  (() => {
+    const testEl     = document.querySelector('.test');
+    if (!testEl) return;
+
+    const vragen     = testEl.querySelectorAll('.vraag');
+    const resultaten = testEl.querySelectorAll('.resultaat');
+    const dots       = testEl.querySelectorAll('.test-dot');
+    const counter    = testEl.querySelector('.test-count');
+    const opnieuwBtn = testEl.querySelector('.opnieuw');
+    const testFoot   = testEl.querySelector('.test-foot');
+    const totaal     = vragen.length;
+
+    const answers = [];
+    let currentQ  = 0;
+
+    // ----- Scoring (duplicate of tests/scoring.test.html) -----
+    function bepaalStand(list) {
+      const counts = { A: 0, B: 0, C: 0 };
+      for (const a of list) counts[a]++;
+      if (counts.C >= 4) return 'gereguleerd';
+      if (counts.A >= 4) return 'activatie';
+      if (counts.B >= 4) return 'uitschakeling';
+      if (counts.A >= 2 && counts.B >= 2) return 'wisselend';
+      if (counts.A > counts.B) return 'activatie';
+      if (counts.B > counts.A) return 'uitschakeling';
+      return 'wisselend';
+    }
+
+    // ----- UI update helpers -----
+    function updateDots(activeIndex, doneCount) {
+      dots.forEach((d, i) => {
+        d.classList.remove('is-active', 'is-done');
+        if (i < doneCount)          d.classList.add('is-done');
+        else if (i === activeIndex) d.classList.add('is-active');
+      });
+    }
+
+    function updateCounter(n) {
+      const pad = v => String(v).padStart(2, '0');
+      counter.textContent = `${pad(n)} / ${pad(totaal)}`;
+    }
+
+    function showVraag(index) {
+      vragen.forEach((v, i) => v.classList.toggle('is-active', i === index));
+      resultaten.forEach(r => r.classList.remove('is-active'));
+      updateDots(index, index);
+      updateCounter(index + 1);
+      opnieuwBtn.hidden = true;
+      testFoot.hidden = false;
+    }
+
+    function showResult() {
+      vragen.forEach(v => v.classList.remove('is-active'));
+      const stand = bepaalStand(answers);
+      const target = testEl.querySelector(`.resultaat[data-resultaat="${stand}"]`);
+      if (target) target.classList.add('is-active');
+      updateDots(-1, totaal);
+      updateCounter(totaal);
+      opnieuwBtn.hidden = false;
+      testFoot.hidden = true;
+      // Auto-scroll added in Task 7
+    }
+
+    // ----- Event wiring -----
+    vragen.forEach((vraag, index) => {
+      vraag.querySelectorAll('button[data-stand]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          answers[index] = btn.dataset.stand;
+          if (index < totaal - 1) {
+            currentQ = index + 1;
+            showVraag(currentQ);
+          } else {
+            showResult();
+          }
+        });
+      });
+    });
+
+    opnieuwBtn.addEventListener('click', () => {
+      answers.length = 0;
+      currentQ = 0;
+      showVraag(0);
+      testEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
   </script>
 
 </body>
