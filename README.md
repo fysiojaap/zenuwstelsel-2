@@ -5,34 +5,44 @@ dysregulation. Single-file static site: `index.html`.
 
 ## Deploy
 
-The `build/` folder contains everything the live site needs. Upload its
-contents to any static host (Netlify, Cloudflare Pages, GitHub Pages, S3,
-own server) and point DNS for zenuwstelsel.com at the host. Done.
+The site is hosted on **Hostinger** with git auto-deploy. Hostinger pulls
+this repo into the domain's docroot on every deploy; the `.htaccess` at
+the repo root internally rewrites every request into the `build/`
+subdirectory, so visitors only ever see the production payload — source
+files at the root, `tests/`, `docs/`, and `.git/` all 404.
 
-### What's in `build/`
+To ship a change:
+
+1. Edit `index.html` / `favicon.svg` at the repo root.
+2. Mirror them into `build/` (`cp index.html favicon.svg build/`).
+3. Commit and push to `main`.
+4. Hostinger picks up the new commit and redeploys.
+
+If a change doesn't appear on the live site after a deploy, hard-refresh
+the browser (Ctrl/Cmd + Shift + R) — Hostinger and the browser both
+cache static assets.
+
+### Repo layout
 
 ```
+.htaccess        — Apache rewrite: routes every request into build/
+index.html       — source-of-truth markup (edit here)
+favicon.svg      — source-of-truth icon (edit here)
 build/
-├── index.html    — the entire site (markup, styles, scoring JS, copy)
-└── favicon.svg   — browser tab icon, referenced from index.html
+├── index.html   — deployed copy (mirror of root, served by Hostinger)
+└── favicon.svg  — deployed copy
+tests/           — local-only, not deployed
+docs/            — specs and plans, not deployed
 ```
 
-That's the whole production payload. No CSS/JS bundles, no fonts, no
-images — every visual asset is inlined in `index.html` (CSS in `<style>`,
-SVGs as inline `<svg>`, the only external link being the favicon).
-
-### Updating `build/`
+The whole production payload is just two files. No CSS/JS bundles, no
+fonts, no external images — every visual asset is inlined in
+`index.html` (CSS in `<style>`, SVGs as inline `<svg>`).
 
 `build/` is a hand-mirrored copy of the source files at the repo root —
-there is no compile step or build script. After editing `index.html` or
-`favicon.svg` at the root, copy them into `build/` before deploying:
-
-```sh
-cp index.html favicon.svg build/
-```
-
-Tests, docs, and the `.vscode/` folder stay out of `build/` on purpose —
-they aren't part of the live site.
+there is no compile step or build script. The mirror exists so that the
+`.htaccess` rewrite has a clean directory to point at, isolated from
+tests, docs, and git internals.
 
 ## Tests
 

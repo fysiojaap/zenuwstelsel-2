@@ -1,0 +1,9 @@
+# Hostinger / Apache: serve the site from the build/ subdirectory.
+# Every incoming request is internally rewritten into build/, so source
+# files at the repo root, tests/, docs/, and .git/ are not reachable.
+
+RewriteEngine On
+
+# If the request isn't already inside build/, rewrite it there.
+RewriteCond %{REQUEST_URI} !^/build/
+RewriteRule ^(.*)$ build/$1 [L]
