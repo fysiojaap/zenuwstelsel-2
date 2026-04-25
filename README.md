@@ -5,16 +5,41 @@ dysregulation. Single-file static site: `index.html`.
 
 ## Deploy
 
-No build step. Copy `index.html`, `favicon.svg`, and the `tests/` folder to
-any static host (Netlify, Cloudflare Pages, GitHub Pages, S3, own server).
+The `build/` folder contains everything the live site needs. Upload its
+contents to any static host (Netlify, Cloudflare Pages, GitHub Pages, S3,
+own server) and point DNS for zenuwstelsel.com at the host. Done.
 
-Point DNS for zenuwstelsel.com at the host. Done.
+### What's in `build/`
+
+```
+build/
+├── index.html    — the entire site (markup, styles, scoring JS, copy)
+└── favicon.svg   — browser tab icon, referenced from index.html
+```
+
+That's the whole production payload. No CSS/JS bundles, no fonts, no
+images — every visual asset is inlined in `index.html` (CSS in `<style>`,
+SVGs as inline `<svg>`, the only external link being the favicon).
+
+### Updating `build/`
+
+`build/` is a hand-mirrored copy of the source files at the repo root —
+there is no compile step or build script. After editing `index.html` or
+`favicon.svg` at the root, copy them into `build/` before deploying:
+
+```sh
+cp index.html favicon.svg build/
+```
+
+Tests, docs, and the `.vscode/` folder stay out of `build/` on purpose —
+they aren't part of the live site.
 
 ## Tests
 
-Open `tests/scoring.test.html` in a browser. All 17 scoring cases should
-show green "✓" — covers all four result paths (activatie, uitschakeling,
-wisselend, gereguleerd) and edge cases.
+Tests are not deployed. Open `tests/scoring.test.html` in a browser
+locally. All 17 scoring cases should show green "✓" — covers all four
+result paths (activatie, uitschakeling, wisselend, gereguleerd) and edge
+cases.
 
 ## Edit content
 
