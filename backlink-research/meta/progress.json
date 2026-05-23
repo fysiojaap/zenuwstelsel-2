@@ -1,0 +1,14 @@
+{
+  "fase_0": "completed",
+  "fase_1": {"status": "in_progress", "agents_done": 0, "agents_total": 5},
+  "fase_2": "pending",
+  "fase_3": "pending",
+  "fase_4": "pending",
+  "fase_5": "pending",
+  "fase_6": "pending",
+  "started_at": "2026-05-23T12:25:00Z",
+  "last_updated": "2026-05-23T12:25:00Z",
+  "doel": "100+ NL gezondheid/HR backlink-prospects voor gastblog over verzuim/burn-out/autonoom zenuwstelsel",
+  "doelpaginas": ["psychosomatischefysio.nl", "burnout-help.nl"],
+  "uitgesloten": ["hr-communicatie.nl", "hrcommunity.nl", "flexmarkt.nl"]
+}

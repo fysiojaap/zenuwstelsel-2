@@ -1,0 +1,189 @@
+{
+  "generated_at": "2026-05-23T12:25:00Z",
+  "categories": {
+    "C1_HR_vakbladen": {
+      "label": "HR-vakbladen en HR-platforms",
+      "queries": [
+        "HR vakblad Nederland gastblog schrijven",
+        "\"HR-platform\" \"gastartikel\" Nederland",
+        "HR magazine Nederland auteur worden expertbijdrage",
+        "\"schrijf mee\" OR \"expertbijdrage\" HR site:.nl",
+        "personeelsmanagement vakblad Nederland",
+        "HR community blog Nederland verzuim burn-out"
+      ]
+    },
+    "C2_arbo_verzuim": {
+      "label": "Arbo, verzuim, casemanagement",
+      "queries": [
+        "arbo vakblad Nederland gastartikel",
+        "verzuim platform schrijven voor Nederland",
+        "casemanagement vakblad Nederland artikel",
+        "re-integratie vakblad NL auteur",
+        "arbeidsdeskundige blog Nederland",
+        "bedrijfsarts vakblad NL gastartikel",
+        "\"register casemanagement\" OR \"RCMS\" artikel insturen"
+      ]
+    },
+    "C3_bedrijfsarts": {
+      "label": "Bedrijfsarts en bedrijfsgezondheidszorg",
+      "queries": [
+        "bedrijfsgeneeskunde Nederland vakblad",
+        "\"NVAB\" publicatie gastauteur",
+        "OVAL arbodienst blog",
+        "Tijdschrift Bedrijfs- en Verzekeringsgeneeskunde insturen",
+        "bedrijfsgezondheidszorg artikel Nederland",
+        "arbodienst blog werkgever"
+      ]
+    },
+    "C4_wellbeing": {
+      "label": "Wellbeing, vitaliteit en preventie",
+      "queries": [
+        "vitaliteit werkgever blog Nederland gastauteur",
+        "preventie werknemer blog NL",
+        "\"OpenUp\" OR \"Niceday\" gastartikel",
+        "mentaal welzijn werkgever Nederland blog",
+        "corporate wellbeing blog NL",
+        "duurzame inzetbaarheid vakblad Nederland",
+        "vitaliteitsmanager blog NL"
+      ]
+    },
+    "C5_MKB": {
+      "label": "MKB- en ondernemers-platforms",
+      "queries": [
+        "MKB platform Nederland gastartikel HR",
+        "ondernemers blog Nederland verzuim",
+        "\"MKB Servicedesk\" OR \"De Ondernemer\" gastauteur",
+        "Sprout MT/Sprout schrijf mee",
+        "ondernemerstijdschrift NL HR personeel",
+        "mkb adviseur blog Nederland"
+      ]
+    },
+    "C6_leiderschap": {
+      "label": "Leiderschap en management",
+      "queries": [
+        "leiderschap blog Nederland gastauteur",
+        "management vakblad NL schrijf mee",
+        "\"ManagementSite\" OR \"ManagementTeam\" auteur worden",
+        "leidinggeven blog Nederland",
+        "directeur platform Nederland artikel"
+      ]
+    },
+    "C7_zorgverzekeraars": {
+      "label": "Zorgverzekeraars en werkgevers-content",
+      "queries": [
+        "Zilveren Kruis werkgevers blog",
+        "CZ zakelijk werkgever artikel",
+        "ONVZ werkgever content",
+        "Menzis werkgever vitaliteit blog",
+        "zorgverzekeraar werkgever content Nederland",
+        "inkomensverzekeraar blog werkgever NL"
+      ]
+    },
+    "C8_branche": {
+      "label": "Branche-verenigingen (HR, zorg, fysio, psychologie)",
+      "queries": [
+        "KNGF fysiotherapie blog gastauteur",
+        "NIP psychologie publicatie auteur",
+        "NOBCO coaching blog Nederland",
+        "\"NVvA\" OR \"NVPMT\" blog",
+        "branche-vereniging arbo blog Nederland",
+        "beroepsvereniging psychosomatisch fysiotherapie",
+        "NVP personeelsmanagement publicatie"
+      ]
+    },
+    "C9_publiek": {
+      "label": "Publieke arbeidsmarkt-platforms",
+      "queries": [
+        "UWV Perspectief artikel werkgever",
+        "SER blog werkgever Nederland",
+        "AWVN publicatie werkgever",
+        "WSP werkgevers servicepunt artikel",
+        "gemeente werkgevers vitaliteit blog"
+      ]
+    },
+    "C10_hrtech": {
+      "label": "HR-tech vendor blogs",
+      "queries": [
+        "\"Visma Raet\" blog gastauteur",
+        "\"AFAS\" blog werkgever",
+        "\"Personio\" Nederland blog",
+        "\"HiBob\" Nederland blog",
+        "\"Officient\" OR \"Recruitee\" blog NL gastauteur",
+        "HR-software vendor blog Nederland",
+        "verzuimsoftware blog Nederland"
+      ]
+    },
+    "C11_psychologie": {
+      "label": "Psychologie en coaching",
+      "queries": [
+        "Psychologie Magazine schrijven",
+        "coaching platform Nederland gastauteur",
+        "psycholoog blog werkgever Nederland",
+        "NOBCO coachlink artikel",
+        "coach federatie Nederland blog",
+        "mental coach blog NL",
+        "psychosomatiek blog Nederland"
+      ]
+    },
+    "C12_zorg_B2B": {
+      "label": "Zorg- en gezondheid B2B",
+      "queries": [
+        "Skipr blog Nederland gastauteur",
+        "Zorgvisie artikel werkgever zorg",
+        "Medisch Contact werkgever sectie",
+        "Nationale Zorggids artikel insturen",
+        "zorgmagazine vakblad B2B Nederland",
+        "Qruxx Zorg artikel",
+        "ICT Health Nederland"
+      ]
+    },
+    "C13_onderwijs": {
+      "label": "Onderwijs en HR-opleidingen",
+      "queries": [
+        "AvansHR blog opleiding HR",
+        "Hogeschool Rotterdam HR blog",
+        "HR opleiding blog Nederland",
+        "HR docent blog NL",
+        "master HRM blog Nederland"
+      ]
+    },
+    "C14_mental_health_b2b": {
+      "label": "Mental health platforms voor werkgevers",
+      "queries": [
+        "\"OpenUp\" werkgever blog",
+        "\"Niceday\" werkgever Nederland blog",
+        "mindforce Nederland blog",
+        "\"Movir\" verzekeraar blog werkgever",
+        "Lifeguard mentaal werkgever blog",
+        "EAP Nederland blog werkgever",
+        "mental health benefit platform NL"
+      ]
+    },
+    "C15_branche_HR": {
+      "label": "Branche-specifieke HR",
+      "queries": [
+        "V&VN zorg HR blog",
+        "CNV Onderwijs HR blog",
+        "FNV werkgever blog Nederland",
+        "bouw HR blog Nederland verzuim",
+        "industrie HR vakblad NL",
+        "zorg HR blog Nederland",
+        "onderwijs HR blog NL"
+      ]
+    },
+    "C16_burnout_polyvagaal": {
+      "label": "Stress, burn-out, polyvagaal, ergonomie (thema-specifiek)",
+      "queries": [
+        "polyvagaal blog Nederland werkgever",
+        "burn-out herstel blog werkgever NL",
+        "stress werkgever blog Nederland gastauteur",
+        "psychosomatiek werkgever blog",
+        "ergonomie en mentaal welzijn blog Nederland",
+        "slaap werkgever blog vakblad NL",
+        "mindfulness werkgever Nederland blog"
+      ]
+    }
+  },
+  "totaal_queries": 96,
+  "executed": []
+}
