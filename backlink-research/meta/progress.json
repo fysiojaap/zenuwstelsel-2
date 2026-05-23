@@ -1,7 +1,7 @@
 {
   "fase_0": "completed",
-  "fase_1": {"status": "in_progress", "agents_done": 0, "agents_total": 5},
-  "fase_2": "pending",
+  "fase_1": {"status": "completed", "agents_done": 5, "agents_total": 5, "unieke_domeinen": 381},
+  "fase_2": {"status": "in_progress", "agents_done": 0, "agents_total": 5},
   "fase_3": "pending",
   "fase_4": "pending",
   "fase_5": "pending",
