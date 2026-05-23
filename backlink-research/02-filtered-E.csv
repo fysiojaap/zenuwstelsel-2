@@ -1,1 +1,77 @@
 domain,category,source_query,first_impression,filter1_live_nl,filter2_recent_content,filter3_doelgroep_match,overall_pass,reason_if_failed,fetched_at
+aenowaterschappen.nl,C9,A&O fonds Waterschappen blog,A&O fonds Waterschappen met blogs over vitale en wendbare organisaties.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+aovergelijken.nl,C7,inkomensverzekeraar blog werkgever,Blogplatform over arbeidsongeschiktheidsverzekeringen.,PASS,UNCLEAR,UNCLEAR,FAIL,geen duidelijke 2025-blog gevonden; AOV vergelijker mogelijk vooral B2C zzp,2026-05-23T12:37:46Z
+arbeidspsychologenmiddennederland.nl,C16,polyvagaal blog werkgever,Arbeidspsychologen met blog over polyvagaal theorie in werkcontext.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+arboportaal.nl,C2|C12,arbo vakblad gastartikel,Officieel arbo-kennisportal van Rijksoverheid met magazines en externe bronnen.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+assistverzuim.nl,C16|C7,bedrijfsarts psychische klachten,Verzuimadviesbureau met blog over psychische klachten en verzuim.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+banninkcoaching.nl,C6,Nederlandse leiderschapscoaching platform blog publiceren,Coachingspraktijk-blog over rust en richting in leiderschap,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+berenschot.nl,C1,duurzame inzetbaarheid artikel,Adviesbureau met inhoudelijke artikelen over duurzame inzetbaarheid en HR.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+bewegingveroorzakers.nl,C6,leidinggeven blog Nederland artikel,Adviespraktijk met blog over leiderschapstheorie en praktijk,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+bluevi.com,C10,verzuimsoftware blog Nederland werkgever,BlueVi blog over verzuimsoftware-keuzes voor werkgevers,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+bouwenuitvoering.nl,C15,Goedopgeleidpersoneel bouw infra,Vakblad bouw infra techniek met artikelen over branche en personeel.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+budgetcoach.nl,C15,zorg HR blog Nederland,Budgetcoaching met blogs voor werkgevers in zorg over geldzorgen personeel.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+care2care.nl,C15,SectorplanPlus zorg welzijn,Adviesbureau zorgsector met artikelen over subsidies en personeelsbehoud.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+circulairemaakindustrie.nl,C15,Metaalunie FME industrie werkgever,Platform circulaire maakindustrie met ondernemerscontent.,PASS,PASS,UNCLEAR,PASS,,2026-05-23T12:37:46Z
+coachingfederation.nl,C8,coach federatie Nederland blog,ICF Netherlands chapter met blog over coachingvakgebied en professionele standaarden.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+compucase.nl,C2,verzuim software,Verzuim software-leverancier met B2B content.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+cz.nl,C7,CZ zakelijk werkgever artikel,Zakelijk portaal van zorgverzekeraar CZ met uitgebreide verzuim- en inzetbaarheidscontent.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+dehora.nl,C16,nachtwerk werkgever blog,Consultancy roosters/werktijden met blog over nachtwerk en gezondheid.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+deondernemer.nl,C5,"""ondernemer.nl"" OR ""ikgastarten"" OR ""deondernemer.nl"" gastblog",Vakmedia-platform voor ondernemers met categorie Personeel en podcasts,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+driessen.nl,C7,CNV vakbond werkgever artikel,HR-dienstverlener met kenniscentrum voor goed werkgeverschap.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+duurzameinzetbaarheid.nl,C2,duurzame inzetbaarheid platform,Kennisportal duurzame inzetbaarheid met praktijkvoorbeelden en interventies.,FAIL,FAIL,FAIL,FAIL,domein gekaapt/herbestemd voor online casino-content geen DI meer,2026-05-23T12:37:46Z
+ergonomiewebshop.nl,C16,ergonomisch werken,Ergonomie-webshop met blog over gezond werken.,PASS,PASS,UNCLEAR,PASS,,2026-05-23T12:37:46Z
+falkeverbaan.nl,C10,Yezzer Otherside Falke Verbaan verzuim blog Nederland,Toonaangevend bureau over gedragsmatige aanpak van verzuim met onderzoek-blog,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+fmtgezondheidszorg.nl,C12,zorgmagazine vakblad B2B Nederland,Crossmediaal kennisplatform technologie en huisvesting in zorg B2B.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+gezondeboel.nl,C14,mental health benefit platform NL,Online welzijnsplatform met B2B aanbod voor werkgevers.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+gortcoaching.nl,C11,mental coach blog NL stress werknemer,Mental coachingsbureau met praktische werknemerstress-content.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+han.nl,C13,HAN HRM lectoraat blog publicatie,HAN lectoraat HRM en lectoraat Arbeid & Gezondheid - directe inhoudelijke match.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+health.nl,C12,Zorg en Welzijn vakblad publicatie auteur,Verzamelportal vakbladen zorg.,PASS,UNCLEAR,FAIL,FAIL,lifestyle/consumentenportal (fietsen golf) geen B2B-zorgvakblad,2026-05-23T12:37:46Z
+hogeschoolrotterdam.nl,C13,Hogeschool Rotterdam HRM blog,Hogeschool Rotterdam met HRM-opleiding en nieuwskanalen.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+hrmspot.nl,C10,HR-software vendor blog Nederland werkgever,Reviewplatform met inhoudelijke artikelen over HR-softwareleveranciers,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+hva.nl,C13,master HRM blog Nederland onderzoek werk,Hogeschool van Amsterdam met HRM opleiding en onderzoekspublicaties.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+inspiratie.uwv.nl,C9,UWV Perspectief artikel werkgever,Inspiratieplatform UWV voor werkgevers met artikelen over verzuim en werkgeverschap.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+ivvo.nl,C9,SER blog werkgever Nederland,Kennisplatform met blog over wat duurzame inzetbaarheid betekent.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+joelaerts.nl,C6,leiderschap blog Nederland gastauteur,Persoonlijke blog over leiderschap leren en ontwikkelen,PASS,FAIL,PASS,FAIL,blogposts dateren uit 2018 geen recent 2025-2026 content,2026-05-23T12:37:46Z
+koningscoaching.nl,C11,psychosomatiek blog Nederland werk gezondheid,Coachingsblog met expliciete psychosomatiek-uitleg.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+leidinggeven.com,C6,leidinggeven blog Nederland artikel,Specialistenplatform over leidinggeven met praktische tips,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+loi.nl,C13,master HRM blog Nederland onderzoek werk,LOI HRM-master - opleider met content over HRM.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+managementsite.nl,C4|C6,vitaliteitsmanagement blog,Brede online management-publicatie met artikelen vitaliteit en burn-out.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+medprevent.nl,C16,slaap arbodienst Nederland,Gecertificeerde arbodienst met blog over slaap en gezondheid.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+mettom.nl,C2,arbodienst werkgever blog,Arbodienst-blog over verplichtingen voor werkgevers.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+mkbasics.nl,C3,bedrijfsgezondheidszorg MKB,Arbodienst voor MKB met nieuws en eventsectie over bedrijfsgezondheidszorg.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+mybusinessmedia.nl,C15,industrie HR vakblad NL,Uitgever van industriebladen en HR-titels.,PASS,UNCLEAR,UNCLEAR,FAIL,uitgever heeft veel titels afgestoten geen duidelijk HR-vakblad gevonden,2026-05-23T12:37:46Z
+nestor.nl,C2,platform duurzame inzetbaarheid,Platform Duurzame Inzetbaarheid met content voor oudere werknemers.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+nip.nl,C8,NIP psychologie publicatie auteur,Grootste beroepsvereniging psychologen NL met publicatiestromen rond werk en welzijn.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+nobco.nl,C8,NOBCO coaching blog Nederland,Grootste beroepsvereniging coaches NL met e-magazine Coach voor gastbijdragen.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+ntvg.nl,C3,bedrijfsgeneeskunde NTVG,Nederlands Tijdschrift voor Geneeskunde met artikelen over bedrijfsgeneeskunde.,PASS,PASS,UNCLEAR,PASS,,2026-05-23T12:37:46Z
+nyenrode.nl,C13,HR opleiding blog Nederland kennisplatform,Nyenrode executive HR & verandermanagement - autoriteitsplatform academisch HR.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+onderwijscommunity.nl,C15,CNV Onderwijs HR blog,Community-site onderwijs met artikelen over burn-out en strategisch HR in onderwijs.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+operatiefrissepeper.nl,C9,SER blog werkgever Nederland,Initiatief rond duurzame inzetbaarheid met praktische voorbeelden.,PASS,PASS,UNCLEAR,PASS,,2026-05-23T12:37:46Z
+overkwaliteitvanzorg.nl,C12,Qruxx Zorg artikel publicatie,Platform Kwaliteit in Zorg met openbare auteursinformatie voor inzendingen.,PASS,FAIL,UNCLEAR,FAIL,geen 2025/2026 artikelen gevonden meeste content uit 2011-2017,2026-05-23T12:37:46Z
+perspectief-adviesgroep.nl,C9,UWV Perspectief artikel werkgever,Adviesgroep voor bedrijfsoptimalisatie en verzuim-/re-integratiebegeleiding.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+poraad.nl,C15,onderwijs HR blog NL,PO-Raad sectororganisatie primair onderwijs met dossiers over werkdruk en strategisch HR.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+psychologiemagazine.nl,C11,Psychologie Magazine schrijven gastauteur,Toonaangevend consumentenblad psychologie - accepteert journalistieke proposals via redactie.,PASS,UNCLEAR,UNCLEAR,FAIL,zuiver B2C-consumentenmagazine geen werkgever-doelgroep,2026-05-23T12:37:46Z
+pwnet.nl,C1|C6|C15|C13,HR vakblad gastblog,Grootste HR-platform van Nederland (voorheen PW de Gids); kennis en nieuws voor HR-professionals.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+regioplus.nl,C15,RegioPlus zorgwerkgever blog,Samenwerking regionale werkgeversorganisaties zorg & welzijn met blog over personeel.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+rnvc.nl,C8,casemanagement register Nederland blog verzuim,Beroepsvereniging casemanagers verzuim - directe link met HR/arbo-pitchthema.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+samenvoordeklant.nl,C9,WSP werkgeversservicepunt artikel,Landelijk platform werkgeversservicepunten met content over arbeidsmarkt.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+securex.nl,C15,zorg HR blog Nederland,HR-dienstverlener met blogs over HR-uitdagingen in de zorg.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+slaapwaarde.nl,C16,slaap nachtwerk blog,Slaapadviesplatform met content over slapen en werk.,PASS,PASS,UNCLEAR,PASS,,2026-05-23T12:37:46Z
+sociaalwerk-werkt.nl,C4,vitaliteit werkgever blog,Branche-platform sociaal werk met werkgeverstips rond vitaliteit.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+stigas.nl,C4|C15,vitaliteit werkgever blog,Arbo-organisatie voor groene sector met vitaliteitscontent voor werkgevers.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+teamiy.com,C15,industrie HR vakblad NL,HR-platform voor maakindustrie met oplossingen en blog.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+tijdschriftdepsycholoog.nl,C8,NIP psychologie publicatie auteur,NIP-vakblad De Psycholoog accepteert auteursvoorstellen met wetenschappelijke onderbouwing.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+trainjegelukscompetenties.nl,C1,HR werkgeluk,Werkgeluk-content voor HR managers; klein platform met gericht thema.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+uitgedokterd.nl,C2,register casemanager,Kennisbank over (register)casemanagers en re-integratie.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+veldhuisadvies.nl,C4|C5,vitaliteit werkgever blog,Adviesblog met focus op vitaliteit en duurzame inzetbaarheid voor werkgevers.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+verzuimapplicatie.nl,C2,verzuim platform,Verzuimsoftware-aanbieder met informatieve content.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+vitaalconcern.nl,C16,burn-out preventie blog,Vitaliteitsadviesbureau met blog over burn-out preventie medewerkers.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+vvponline.nl,C7,inkomensverzekeraar blog werkgever,Vakmedium voor financieel adviseurs met artikelen over vroege interventies psychische klachten.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+werkenveiligheid.nl,C2|C12,vitaliteit werk preventie,Kennisplatform over preventie RI&E en sociale veiligheid; vitaliteitsbeleid en duurzame inzetbaarheid.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+wij-leren.nl,C15,onderwijs HR blog NL,Onderwijskennisbank met begrippenpagina's over HRM.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+wspgv.nl,C9,WSP werkgeversservicepunt artikel,WSP Groot-Voorne met content over inclusief werkgeverschap.,PASS,UNCLEAR,PASS,PASS,,2026-05-23T12:37:46Z
+yezzer.nl,C5,ondernemers blog Nederland verzuim,Blog van verzuim-experts met praktische artikelen over verzuimgesprekken,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+zakenwijzer.nl,C2|C4,arbodienst blog werkgever,Brede zakelijke blog met categorie arbodienst voor werkgevers.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+zorgenwelzijnzhz.nl,C15,SectorplanPlus zorg welzijn,Regionaal werkgeversplatform Zuid-Holland-Zuid met nieuws zorg & welzijn.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+zorgpleinnoord.nl,C15,RegioPlus zorgwerkgever blog,Regionaal werkgeversverband zorg Noord-Nederland met artikelen.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
+zorgzijnwerkt.nl,C15,SectorplanPlus zorg welzijn,Regionaal werkgeversverband Haaglanden zorg met arbeidsmarktcontent.,PASS,PASS,PASS,PASS,,2026-05-23T12:37:46Z
