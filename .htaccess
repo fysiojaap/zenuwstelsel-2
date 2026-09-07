@@ -1,9 +1,39 @@
-# Hostinger / Apache: serve the site from the build/ subdirectory.
-# Every incoming request is internally rewritten into build/, so source
-# files at the repo root, tests/, docs/, and .git/ are not reachable.
+# Hostinger / Apache (LiteSpeed) — zenuwstelsel.com
+#
+# Volgorde is belangrijk:
+#   1. externe 301-redirects (host- en URL-canonicalisatie)
+#   2. de interne rewrite naar build/
+# Een interne rewrite mag nooit vóór een 301 staan, anders redirect je
+# de al herschreven /build/-URL en krijg je een loop.
 
 RewriteEngine On
 
-# If the request isn't already inside build/, rewrite it there.
+# --- 1. Canonicalisatie ------------------------------------------------
+
+# www.zenuwstelsel.com -> zenuwstelsel.com (apex is canonical, zie <link rel=canonical>)
+RewriteCond %{HTTP_HOST} ^www\.zenuwstelsel\.com$ [NC]
+RewriteRule ^(.*)$ https://zenuwstelsel.com/$1 [R=301,L]
+
+# /index.html -> /  (voorkomt twee URL's voor dezelfde pagina)
+# THE_REQUEST bevat de originele requestregel, dus deze regel vuurt alleen
+# op een echte browser-request en niet op de interne rewrite hieronder.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+# --- 2. Docroot naar build/ -------------------------------------------
+
+# Elk verzoek wordt intern in build/ gezet, zodat bronbestanden in de repo-root,
+# tests/, docs/ en .git/ niet bereikbaar zijn.
 RewriteCond %{REQUEST_URI} !^/build/
 RewriteRule ^(.*)$ build/$1 [L]
+
+# --- 3. Caching --------------------------------------------------------
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # HTML kort cachen: een deploy moet snel zichtbaar zijn.
+  ExpiresByType text/html                 "access plus 10 minutes"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType application/xml           "access plus 1 day"
+  ExpiresByType text/plain                "access plus 1 day"
+</IfModule>

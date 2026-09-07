@@ -1,0 +1,12 @@
+# zenuwstelsel.com
+# Zoekmachines en AI-crawlers zijn welkom op de hele site.
+
+User-agent: *
+Allow: /
+
+# Crawlers hebben niets te zoeken in bron-, test- of docmappen.
+# (De .htaccess rewrite verbergt deze al, dit is de expliciete bevestiging.)
+Disallow: /tests/
+Disallow: /docs/
+
+Sitemap: https://zenuwstelsel.com/sitemap.xml
