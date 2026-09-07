@@ -229,6 +229,49 @@ bestaande pagina.
   een toegevoegde contentlink geeft `zs_uitgaande_link`, geen JS-fouten.
 - **Status:** `open` · agent zelfstandig
 
+### 18 — indexeringsstatus gemeten
+- **Bevinding via GSC URL-inspectie:** zenuwstelsel.com is **geïndexeerd**.
+  Verdict PASS, `Ingediend en geïndexeerd`, robots.txt ALLOWED, fetch
+  SUCCESSFUL, en de canonical die Google kiest is dezelfde als de onze
+  (`https://zenuwstelsel.com/`). De site is dus nooit onvindbaar geweest.
+- **Laatste crawl: 2026-09-05**, twee dagen vóór run 01 live ging. Google's
+  index bevat op dit moment nog de aprilversie. De verbeteringen uit run 01
+  (schema-datums, meta robots, snellere snippets) tellen pas mee na een
+  hercrawl.
+- **Verwijzende URL's: precies twee** — `currentchron.com` (onbekende site,
+  waarschijnlijk een scraper) en de eigen www-variant. Er zijn dus feitelijk
+  **geen backlinks**. Dat is relevant voor de T+9-drempel: 1.500 organische
+  bezoekers per maand halen zonder autoriteitssignalen is zwaarder dan de
+  brief aanneemt.
+- **Wat dit ook betekent:** de site was al indexeerbaar en gecrawld vóór de
+  property vandaag geverifieerd werd. Die geschiedenis is permanent
+  onmeetbaar — GSC doet geen backfill.
+- **Status:** `gemeten` · agent zelfstandig
+
+### 19 — verify-live.sh toegevoegd
+- **Wijziging:** script dat controleert of de live site draait wat er op
+  `origin/main` staat: homepage byte-vergelijking, robots.txt en sitemap.xml
+  op 200, beide 301-redirects, en vijf bronbestanden op 404.
+- **Waarom:** de stille deploy-storing is de gevaarlijkste faalmodus van dit
+  experiment. Commit landt, site verandert niet, en elke meting daarna
+  beschrijft de oude versie — wat er precies uitziet als "de wijziging hielp
+  niet". Dat is vier maanden lang gebeurd.
+- **Ontwerpdetail:** het script vergelijkt met `origin/main`, niet met de
+  werkmap, omdat Hostinger van main deployt. Loopt je branch vooruit, dan
+  meldt het dat apart als ongemergd werk in plaats van als storing. De eerste
+  versie vergeleek met de werkmap en gaf meteen vals alarm.
+- **Gemeten:** groen op de live site.
+- **Status:** `gemeten` · agent zelfstandig
+
+### 20 — deploy-procedure gedocumenteerd
+- **Wijziging:** README beschrijft nu de drie onderdelen die auto-deploy nodig
+  heeft (SSH-toegang, deploy-key met SSH-URL, webhook), het feit dat Hostinger
+  van `main` deployt, dat een webhook alleen op tóekomstige pushes vuurt, en de
+  stille faalmodus met de verwijzing naar `verify-live.sh`.
+- **Waarom:** de oude README beweerde dat auto-deploy werkte terwijl dat niet
+  zo was. Een onjuiste README is erger dan geen README.
+- **Status:** `gemeten` · agent zelfstandig
+
 ---
 
 ## Niet gedaan, bewust
