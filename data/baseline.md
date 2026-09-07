@@ -97,16 +97,49 @@ De keten die een intake herleidbaar moet maken naar zenuwstelsel.com:
    (GA4 registreert `session_source=zenuwstelsel`, `session_medium=referral`,
    `session_campaign=<uitslagtype>` automatisch). ⚠️ moet één keer in de
    praktijk bevestigd worden met een echte testklik.
-3. **Formulierinzending wordt als key event geteld in GA4** → **onbekend**.
-   Het contactformulier is een Hostinger-formulier (`Contact form 19`).
-   Of de inzending een GA4-event afvuurt is niet van buitenaf vast te stellen.
-   ⚠️ te controleren door Jaap in GA4.
-4. **De intake-afspraak zelf** → valt buiten GA4. Hier is de intakevraag
+3. **Formulierinzending wordt gemeten** → ✅ **ja, beter dan gedacht.**
+   Gemeten in GA4 op 2026-09-07 (property `450662579`, "Fysiojaap"):
+
+   Er ís een bedankpagina. Het formulier op `/neem-contact-op` stuurt door naar
+   **`/bedankt`**, en daar vuurt het event `adeviesgesprek_aangevraagd`. Over
+   juni–augustus 22 keer, oftewel ~7 per maand.
+
+   *Correctie op een eerdere aanname in dit document: ik las in de paginacode
+   een inline "Bedankt"-melding en concludeerde dat er geen bedankpagina was.
+   Dat klopte niet. De pagina bestaat, en daarmee is de attributie een stuk
+   eenvoudiger dan gevreesd: een `page_view` op `/bedankt` met
+   `session_source=zenuwstelsel` is een schone, telbare conversie.*
+
+4. **Maar het telt niet als key event** → ⚠️ **kapot door een naamfout.**
+   De ingestelde key events zijn `purchase`, `Adviesgesprek_aangevraagd` en
+   `Gratis_gesprek_geboekt`. Het event dat werkelijk vuurt heet
+   `adeviesgesprek_aangevraagd` — kleine letter én een typefout
+   ("adevies" in plaats van "advies"). GA4-eventnamen zijn hoofdlettergevoelig,
+   dus die 22 inzendingen tellen als **nul** conversies.
+
+   Hetzelfde geldt voor `GA4_gratis_gesprek_boeken` (37 keer in drie maanden,
+   de CTA-klik op diverse pagina's): geen key event. Alleen
+   `Gratis_gesprek_geboekt` telt, en dat vuurde 8 keer.
+
+   **Netto: van ~59 conversie-achtige gebeurtenissen in drie maanden worden er
+   8 geteld.** Dit raakt Jaaps eigen rapportage over zijn hoofdsite, niet
+   alleen dit experiment.
+
+5. **De intake-afspraak zelf** → valt buiten GA4. Hier is de intakevraag
    ("hoe bent u hier gekomen, welk woord zocht u?") de enige harde bron.
 
-**Zwakste schakel: stap 3.** Zonder een key event op de formulierinzending
-levert GA4 wel *sessies* per bron, maar geen *conversies* per bron. Dan is de
-primaire KPI alleen te vullen via de intakevraag uit brief §6.3.
+**Open vraag uit deze meting:** het formulier levert ~7 inzendingen per maand,
+terwijl Jaap ~15,6 intakes per maand noemt. Ongeveer de helft komt dus
+vermoedelijk binnen via telefoon, mail, WhatsApp of verwijzing — kanalen die
+GA4 nooit ziet. Dat is geen probleem, maar het bepaalt wel hoe je de cijfers
+leest: **GA4 kan hooguit de helft van de intakes verklaren.** De intakevraag
+uit brief §6.3 blijft daarmee de enige volledige bron.
+
+**Wat dit betekent voor de primaire KPI:** de keten wérkt. Zelfs zonder de
+key-event-fix te repareren is een conversie uit zenuwstelsel.com te meten als
+een `page_view` op `/bedankt` met `session_source=zenuwstelsel`. Het
+repareren van de namen maakt het alleen netter en herstelt Jaaps eigen
+conversierapportage.
 
 ---
 

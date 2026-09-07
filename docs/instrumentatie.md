@@ -142,9 +142,38 @@ configureren**. Voeg toe: `zenuwstelsel.com` én `psychosomatischefysio.nl`.
 Zonder deze stap krijgt de bezoeker bij de sprong een nieuwe client_id en is de
 reis alsnog niet te volgen.
 
-**2. Controleren of een formulierinzending een key event is.** GA4 → Beheer →
-Gebeurtenissen. Dit is de laatste onbekende in de attributieketen. Zonder key
-event zie je wel sessies per bron, maar geen conversies per bron.
+**2. De key-event-namen repareren.** Uitgezocht op 2026-09-07; dit was de
+laatste onbekende in de keten en het antwoord is dubbel.
+
+*Het goede nieuws:* het formulier op `/neem-contact-op` stuurt door naar
+**`/bedankt`**, en daar vuurt `adeviesgesprek_aangevraagd` — ~7 per maand. De
+attributie is dus eenvoudiger dan gedacht: een `page_view` op `/bedankt` met
+`session_source=zenuwstelsel` is een schone conversie.
+
+*Het slechte nieuws:* dat event telt niet mee. De ingestelde key events zijn
+`Adviesgesprek_aangevraagd` en `Gratis_gesprek_geboekt`; wat werkelijk vuurt
+heet `adeviesgesprek_aangevraagd` (kleine letter én een typefout) en
+`GA4_gratis_gesprek_boeken`. GA4-eventnamen zijn hoofdlettergevoelig, dus over
+juni–augustus werden van ~59 conversie-achtige gebeurtenissen er **8** geteld.
+
+**De fix, in GA4 → Beheer → Gebeurtenissen — geen wijziging aan de site:**
+zet de schakelaar "Markeren als sleutelgebeurtenis" aan bij de events die
+écht vuren:
+
+| Zet aan | Wat het is | Per maand |
+|---|---|---|
+| `adeviesgesprek_aangevraagd` | formulier verzonden, vuurt op `/bedankt` | ~7 |
+| `GA4_gratis_gesprek_boeken` | CTA-klik naar de intakepagina | ~12 |
+
+De oude, verkeerd gespelde key events kunnen blijven staan; ze vuren toch
+nooit. Hernoemen van het bestaande event is óók een optie, maar dan breekt de
+historie — aanzetten van het juiste event is veiliger.
+
+**Let op bij het lezen van de cijfers:** het formulier levert ~7 inzendingen
+per maand terwijl Jaap ~15,6 intakes per maand heeft. Ongeveer de helft komt
+binnen via telefoon, mail, WhatsApp of verwijzing. GA4 kan dus hooguit de
+helft van de intakes verklaren; de intakevraag uit brief §6.3 blijft de enige
+volledige bron.
 
 Daarna: doe de test één keer zelf, accepteer de balk, en kijk in GA4 →
 Realtime of `zs_test_start` en `zs_test_klaar` binnenkomen. Dat is het bewijs

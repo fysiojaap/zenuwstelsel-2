@@ -329,6 +329,31 @@ bestaande pagina.
   De browsertest zou dit ook niet gepakt hebben zonder echte gtag.js.
 - **Status:** `gemeten` · agent zelfstandig
 
+### 24 — attributieketen doorgemeten in GA4, naamfout gevonden
+- **Toegang:** GA4 gekoppeld, property `450662579` ("Fysiojaap").
+- **Correctie op een eerdere aanname:** ik concludeerde uit de paginacode dat
+  er geen bedankpagina was en het formulier alleen een inline melding toonde.
+  Dat klopte niet. Er ís een `/bedankt`-pagina, en daar vuurt
+  `adeviesgesprek_aangevraagd` — 22 keer over juni–augustus. De attributie is
+  daarmee eenvoudiger dan gevreesd: een `page_view` op `/bedankt` met
+  `session_source=zenuwstelsel` is een schone conversie.
+- **Bevinding:** de conversietelling op psychosomatischefysio.nl is kapot door
+  een naamfout. Ingesteld als key event zijn `Adviesgesprek_aangevraagd` en
+  `Gratis_gesprek_geboekt`; wat werkelijk vuurt heet
+  `adeviesgesprek_aangevraagd` (kleine letter plus de typefout "adevies") en
+  `GA4_gratis_gesprek_boeken`. GA4-eventnamen zijn hoofdlettergevoelig. Van
+  ~59 conversie-achtige gebeurtenissen in drie maanden worden er **8** geteld.
+- **Reikwijdte:** dit raakt Jaaps eigen rapportage over zijn hoofdsite, niet
+  alleen dit experiment. De fix is een schakelaar in de GA4-beheeromgeving en
+  vereist geen wijziging aan de site — maar de beslissing is aan Jaap, want
+  master prompt §10 houdt die site buiten scope.
+- **Tweede bevinding:** het formulier levert ~7 inzendingen per maand terwijl
+  Jaap ~15,6 intakes noemt. Ongeveer de helft komt binnen via kanalen die GA4
+  nooit ziet. GA4 kan dus hooguit de helft van de primaire KPI verklaren; de
+  intakevraag uit brief §6.3 blijft de enige volledige bron. Dat maakt die
+  turflijst belangrijker dan hij bij het opstellen leek.
+- **Status:** `gemeten` · agent zelfstandig
+
 ---
 
 ## Niet gedaan, bewust
