@@ -197,7 +197,37 @@ bestaande pagina.
   psychosomatischefysio.nl en schrijft voor te stoppen en te vragen bij twijfel
   over de grens. Er wordt geen spoke geschreven die met een bestaande pagina
   concurreert tot Jaap kiest.
-- **Status:** `geblokkeerd` — wacht op beslissing · agent zelfstandig
+- **Status:** `opgelost` — Jaap koos **optie A: splitsen** · beslissing Jaap
+
+### 16 — clusterplan herzien naar optie A
+- **Wijziging:** `docs/clusterplan.md` herschreven. Drie spokes vervallen
+  ("Wat is een ontregeld zenuwstelsel", "De drie standen", "Window of
+  tolerance") plus de nervus vagus-anatomie; die linken voortaan naar de
+  bestaande pagina's op psychosomatischefysio.nl. Er is een tweede harde grens
+  vastgelegd, naast die met burnout-help.nl.
+- **Wat het kost:** twee van de vier testuitslagen verwijzen straks naar een
+  andere site. Dat is de prijs van een schone controlegroep, en het is
+  omkeerbaar als Jaap later alsnog voor optie B kiest.
+- **Ook vastgelegd:** het ijsbad-onderwerp staat bovenaan omdat er een
+  BIG-stem ontbreekt, **niet** vanwege volume — `nervus vagus`-queries leveren
+  zes keer minder op dan zenuwstelsel-queries. De nis is aantoonbaar echt en
+  aantoonbaar klein; dat is nu het grootste risico voor de T+9-drempel.
+- **Status:** `open` · beslissing Jaap, uitwerking agent
+
+### 17 — CTA-kliks gescheiden van contentlinks
+- **Wijziging:** de gedelegeerde klik-handler vuurt nu `zs_cta_klik` alleen op
+  `a.btn-primary` / `a.btn-inline`, en `zs_uitgaande_link` op elke andere link
+  naar psychosomatischefysio.nl.
+- **Waarom nu:** dit is een direct gevolg van optie A. Spokes gaan naar dat
+  domein linken in de lopende tekst. Onder de oude handler zou elke zin met
+  een verwijzing als intake-intentie meetellen en waren de trechtercijfers
+  waardeloos.
+- **Waarom dit geen trechterexperiment is:** er is nog geen provider en dus
+  nog geen data. Er is geen meetperiode om te verstoren; corrigeren vóór de
+  eerste meting is strikt beter dan erna.
+- **Gemeten:** in de browser geverifieerd — een CTA-klik geeft `zs_cta_klik`,
+  een toegevoegde contentlink geeft `zs_uitgaande_link`, geen JS-fouten.
+- **Status:** `open` · agent zelfstandig
 
 ---
 

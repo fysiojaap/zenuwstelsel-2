@@ -22,6 +22,7 @@ Die belofte is hard. De instrumentatie meet daarom uitsluitend:
 | `zs_test_klaar` | `uitslag: activatie \| uitschakeling \| wisselend \| gereguleerd` | welk uitslagtype verscheen |
 | `zs_test_opnieuw` | — | iemand deed de test opnieuw |
 | `zs_cta_klik` | `campagne: <utm_campaign>` | welke CTA is aangeklikt |
+| `zs_uitgaande_link` | `campagne: <utm_campaign>` | een contentlink naar psychosomatischefysio.nl (géén CTA) |
 
 **Wat er nadrukkelijk níet in zit:** geen enkel gegeven antwoord (A/B/C), geen
 antwoordcombinatie, geen vrije tekst, geen persoonsgegevens, geen identifier.
@@ -56,10 +57,28 @@ alleen niets geteld.
 Dat betekent: de meting is nú al ingebouwd en wacht alleen op een provider.
 Er hoeft geen code meer bij.
 
-CTA-kliks worden **gedelegeerd** afgevangen op elke link naar
+Uitgaande kliks worden **gedelegeerd** afgevangen op elke link naar
 `psychosomatischefysio.nl`. De campagnenaam wordt uit de `utm_campaign` in de
 href gelezen, niet apart gehardcodeerd. Markup en meting kunnen dus niet uit
 elkaar lopen, en een toekomstige CTA telt automatisch mee.
+
+**Twee soorten links, twee events.** Sinds Jaaps keuze voor optie A (zie
+`docs/clusterplan.md`) verwijst zenuwstelsel.com voor sommige onderwerpen naar
+bestaande pagina's op psychosomatischefysio.nl in plaats van ze te dupliceren.
+Zulke contentlinks gaan naar hetzelfde domein als de CTA's, en als ze samen
+geteld werden zou elke verwijzing in de lopende tekst als intake-intentie
+meetellen — de trechtercijfers zouden onbruikbaar zijn.
+
+Het onderscheid hangt aan de knopklassen:
+
+| Link | Event |
+|---|---|
+| `a.btn-primary` of `a.btn-inline` | `zs_cta_klik` |
+| elke andere link naar psychosomatischefysio.nl | `zs_uitgaande_link` |
+
+**Bij het schrijven van een spoke: geef een contentlink nooit `btn-primary` of
+`btn-inline`.** Dat is de enige manier waarop deze twee door elkaar kunnen
+gaan lopen.
 
 ---
 

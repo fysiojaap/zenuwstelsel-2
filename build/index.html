@@ -1453,9 +1453,16 @@
       }
     };
 
-    // CTA-kliks, gedelegeerd: elke uitgaande intake-link telt mee,
-    // ook links die later worden toegevoegd. De campagne komt uit de
-    // UTM in de href, zodat markup en meting niet uit elkaar lopen.
+    // Uitgaande kliks naar psychosomatischefysio.nl, gedelegeerd.
+    //
+    // Twee soorten links, twee events. Een CTA is een knop die om een
+    // intake vraagt; een contentlink verwijst naar een uitlegpagina omdat
+    // die daar al staat en we hem hier niet dupliceren. Die twee door
+    // elkaar tellen zou de trechtercijfers onbruikbaar maken: elke
+    // verwijzing in de lopende tekst zou als intake-intentie meetellen.
+    //
+    // Onderscheid op de knopklassen, niet op de URL — de bestemming is
+    // voor beide hetzelfde domein.
     document.addEventListener('click', (e) => {
       const a = e.target.closest && e.target.closest('a[href*="psychosomatischefysio.nl"]');
       if (!a) return;
@@ -1463,7 +1470,8 @@
       try {
         campagne = new URL(a.href).searchParams.get('utm_campaign') || 'geen-utm';
       } catch (err) { /* href niet parseerbaar */ }
-      window.zsTrack('zs_cta_klik', { campagne: campagne });
+      const isCta = a.classList.contains('btn-primary') || a.classList.contains('btn-inline');
+      window.zsTrack(isCta ? 'zs_cta_klik' : 'zs_uitgaande_link', { campagne: campagne });
     }, true);
   })();
   </script>
