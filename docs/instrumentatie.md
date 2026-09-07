@@ -82,48 +82,98 @@ gaan lopen.
 
 ---
 
-## 3. Wat Jaap moet doen — de provider aanzetten
+## 3. De provider: GA4 op property G-70V3CY4G1B
 
-De agent kan geen analytics-account aanmaken. Dit is de enige handeling die
-nodig is om de meting te laten lopen.
+**Gekozen op 2026-09-07 door Jaap.** Dezelfde property als
+psychosomatischefysio.nl, met cross-domain tracking en een toestemmingsbalk.
 
-### Aanbevolen: Plausible
+### Waarom dezelfde property, en niet een aparte
 
-Waarom Plausible en niet GA4:
+De eerste redenering hier was dat een aparte property nodig was om de
+controlegroep schoon te houden. Dat klopte niet: de controlegroep-vergelijking
+uit brief §5 draait op **Search Console**, en dat zijn sowieso al twee losse
+properties. GA4 raakt daar niets aan.
 
-- **Cookieloos.** Geen consent-banner nodig, geen cookiemuur op een pagina die
-  juist op vertrouwen draait.
-- **De privacybelofte blijft verdedigbaar.** Bij GA4 moet je uitleggen wat
-  Google met de data doet. Bij Plausible is dat verhaal kort.
-- **Schone scheiding van de controlegroep.** psychosomatischefysio.nl draait
-  GA4; zenuwstelsel.com op een aparte provider betekent dat de twee datasets
-  nooit per ongeluk door elkaar lopen. De controlegroep uit brief §5 blijft
-  zuiver.
-- Custom events zitten in het basisabonnement (~€9/maand).
+De echte winst van één property is attributie. Alleen binnen één property kan
+cross-domain de reis volgen van de test naar de contactpagina. Dat repareert de
+zwakste schakel uit `data/baseline.md` §3: tot nu toe wisten we alleen dat er
+sessies met `utm_source=zenuwstelsel` binnenkwamen, niet of dezelfde persoon
+daarna daadwerkelijk contact opnam.
 
-**Stap 1** — maak een account op plausible.io en voeg `zenuwstelsel.com` toe
-als site.
+**Scheiden gebeurt op de dimensie `hostname`.** In elk rapport waar het om
+zenuwstelsel.com gaat, filter je daarop.
 
-**Stap 2** — zet in `index.html`, vlak vóór `</head>`, deze regel:
+**Let op — dit raakt de bestaande rapportage.** Verkeer van zenuwstelsel.com
+loopt vanaf nu mee in de standaardrapporten van psychosomatischefysio.nl.
+Zonder hostname-filter tel je twee sites bij elkaar op.
 
-```html
-<script defer data-domain="zenuwstelsel.com" src="https://plausible.io/js/script.js"></script>
-```
+### Hoe de toestemming werkt
 
-**Stap 3** — spiegel naar `build/` (`cp index.html build/`), commit, push.
+`gtag.js` wordt **niet** geladen bij het openen van de pagina. In de `<head>`
+staat alleen een stub die commando's in `dataLayer` parkeert, plus Consent Mode
+v2 met alles op `denied`.
 
-**Stap 4** — maak in Plausible vijf custom-event-goals aan met exact deze
-namen: `zs_test_start`, `zs_test_vraag`, `zs_test_klaar`, `zs_test_opnieuw`,
-`zs_cta_klik`.
+| Situatie | Wat er gebeurt |
+|---|---|
+| Nog geen keuze | Balk verschijnt. Events parkeren in dataLayer. `gtag.js` wordt niet geladen; er verlaat niets de browser. |
+| Klikt "Liever niet" | Keuze opgeslagen. `zsTrack` stopt met parkeren. `gtag.js` wordt nooit geladen. |
+| Klikt "Prima" | `consent update` naar `granted`, `gtag.js` laadt, de geparkeerde events worden alsnog verwerkt. |
+| Herbezoek na keuze | Geen balk. Bij "ja" laadt gtag meteen. |
+| Do Not Track aan | Geen balk, geen events, geen gtag. DNT telt als een nee. |
 
-### Alternatief: GA4
+Er zijn dus **geen cookieloze pings** en geen "modelled data" bij weigering.
+Wie nee zegt, wordt niet gemeten. Punt.
 
-Werkt ook — de laag ondersteunt `gtag` en `dataLayer`. Plak de GA4- of
-GTM-snippet in de `<head>` en de events komen binnen als custom events. Gebruik
-dan wel een **aparte property**, niet `G-70V3CY4G1B` van
-psychosomatischefysio.nl, anders is de controlegroep vervuild. En houd er
-rekening mee dat GA4 cookies zet: dan is een consent-oplossing nodig, en dan
-moet de belofte onder de test opnieuw tegen het licht.
+De keuze staat in `localStorage`, niet in een cookie — een cookie plaatsen om
+te onthouden dat iemand géén cookies wil, is precies het soort ding waar deze
+pagina niet aan mee moet doen. Advertentie-toestemmingen blijven altijd
+`denied`; er wordt hier niets geadverteerd.
+
+In de footer staat "Cookievoorkeur wijzigen", zodat een keuze terug te draaien
+is.
+
+### Wat Jaap nog moet doen in GA4
+
+De code is klaar. Twee dingen kan de agent niet doen:
+
+**1. Cross-domain instellen.** GA4 → Beheer → Gegevensstromen → de stream van
+psychosomatischefysio.nl → Tag-instellingen configureren → **Je domeinen
+configureren**. Voeg toe: `zenuwstelsel.com` én `psychosomatischefysio.nl`.
+Zonder deze stap krijgt de bezoeker bij de sprong een nieuwe client_id en is de
+reis alsnog niet te volgen.
+
+**2. Controleren of een formulierinzending een key event is.** GA4 → Beheer →
+Gebeurtenissen. Dit is de laatste onbekende in de attributieketen. Zonder key
+event zie je wel sessies per bron, maar geen conversies per bron.
+
+Daarna: doe de test één keer zelf, accepteer de balk, en kijk in GA4 →
+Realtime of `zs_test_start` en `zs_test_klaar` binnenkomen. Dat is het bewijs
+dat de keten werkt.
+
+### Over de UTM's naast cross-domain
+
+De CTA's houden hun UTM-parameters. Dat betekent dat GA4 de landing op de
+contactpagina als een **nieuwe sessie** met campagne `zenuwstelsel` telt, ook
+al is het dezelfde bezoeker — een campagnewissel start in GA4 altijd een nieuwe
+sessie.
+
+Dat is geen fout en geen verlies: cross-domain houdt de **client_id** vast, dus
+op gebruikersniveau is de reis wel te volgen. En de UTM's blijven de robuuste
+terugvaloptie als cross-domain om welke reden dan ook niet werkt. Verwacht
+alleen geen sessie die netjes over twee domeinen doorloopt.
+
+### Als de balk de conversie schaadt
+
+De balk is een wijziging aan de trechter en valt dus onder master prompt §4:
+één wijziging tegelijk, hypothese vooraf, minimaal twee weken meten.
+
+**Hypothese:** de balk kost enkele procenten testafronding, en dat is het waard
+omdat er zonder meting helemaal niets te sturen valt.
+
+**Hoe je het merkt:** het afrondingspercentage is meetbaar zodra er data is.
+Blijkt de balk duurder dan verwacht, dan is Plausible het alternatief —
+cookieloos, geen balk, ~€9/maand, en de instrumentatielaag ondersteunt het
+zonder één regel code te veranderen.
 
 ---
 

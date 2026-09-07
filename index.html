@@ -22,6 +22,47 @@
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
+  <!-- ============================================================
+       Google Analytics 4 — pas na toestemming
+       ============================================================
+       gtag.js wordt hier NIET geladen. Er staat alleen een stub die
+       commando's in dataLayer parkeert. Pas als de bezoeker toestemming
+       geeft, wordt gtag.js ingeladen en verwerkt het die wachtrij.
+
+       Geeft de bezoeker geen toestemming, dan wordt het script nooit
+       geladen en verlaat er niets de browser. Ook geen cookieloze
+       pings, ook geen "modelled data" — niets.
+
+       Property G-70V3CY4G1B is dezelfde als die van
+       psychosomatischefysio.nl. Dat is bewust: alleen binnen één
+       property kan cross-domain de reis van test naar contactpagina
+       volgen. De twee sites worden in de rapportage gescheiden op de
+       dimensie hostname.
+       ============================================================ -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    // Consent Mode v2: alles geweigerd tot de bezoeker iets anders zegt.
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'denied',
+      personalization_storage: 'denied',
+      security_storage: 'granted',
+      wait_for_update: 500
+    });
+
+    gtag('js', new Date());
+    gtag('config', 'G-70V3CY4G1B', {
+      // Cross-domain: houdt dezelfde client_id vast bij de sprong naar de
+      // praktijksite, zodat de reis op gebruikersniveau te volgen is.
+      linker: { domains: ['zenuwstelsel.com', 'psychosomatischefysio.nl', 'www.psychosomatischefysio.nl'] }
+    });
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -559,6 +600,117 @@
       font-family: 'Fraunces', serif;
       font-style: italic;
       font-size: 18px;
+    }
+
+    /* ----- Toestemmingsbalk ------------------------------------------
+       Onderaan, niet-blokkerend en zonder overlay. Een modaal venster
+       zou als eerste ding op de pagina tussen de bezoeker en de test
+       gaan staan, en de test is de conversiemotor.                     */
+    .cookiebalk {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 100;
+      background: var(--paper-warm);
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -8px 32px rgba(26, 47, 37, .10);
+      animation: cookie-in 320ms cubic-bezier(.4, 0, .2, 1) both;
+    }
+
+    @keyframes cookie-in {
+      from { transform: translateY(100%); }
+      to   { transform: translateY(0); }
+    }
+
+    .cookiebalk-in {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .cookiebalk-tekst {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 78ch;
+    }
+
+    .cookiebalk-tekst strong { color: var(--ink); font-weight: 500; }
+
+    .cookiebalk-tekst a {
+      color: var(--ink-soft);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      white-space: nowrap;
+    }
+    .cookiebalk-tekst a:hover { color: var(--ink); }
+
+    .cookiebalk-knoppen {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    /* Weigeren moet net zo makkelijk zijn als accepteren: zelfde grootte,
+       zelfde plek, alleen een rustiger vlak. Geen donker patroon.        */
+    .cookie-nee, .cookie-ja {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 24px;
+      border: 1px solid var(--ink);
+      cursor: pointer;
+      transition: all 200ms cubic-bezier(.4, 0, .2, 1);
+      white-space: nowrap;
+    }
+
+    .cookie-nee { background: transparent;  color: var(--ink); }
+    .cookie-ja  { background: var(--ink);   color: var(--paper); }
+
+    .cookie-nee:hover { background: rgba(26, 47, 37, .07); }
+    .cookie-ja:hover  { background: #24402f; }
+
+    .cookie-nee:focus-visible, .cookie-ja:focus-visible,
+    .cookie-heropen:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .cookie-heropen {
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: inherit;
+      color: inherit;
+      opacity: .7;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+    .cookie-heropen:hover { opacity: 1; }
+
+    /* Op mobiel telt elke pixel: de balk staat boven vraag 1, en die vraag is
+       waar de bezoeker instapt. Daarom kleiner en krapper dan op desktop.   */
+    @media (max-width: 760px) {
+      .cookiebalk-in {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 14px 20px 16px;
+      }
+      .cookiebalk-tekst { font-size: 13px; line-height: 1.5; }
+      .cookiebalk-knoppen { margin-left: 0; }
+      .cookie-nee, .cookie-ja { flex: 1; padding: 11px 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cookiebalk { animation: none; }
     }
 
     .opnieuw {
@@ -1412,8 +1564,25 @@
     <footer class="site-foot" role="contentinfo">
       <div>zenuwstelsel.com · een zenuwstelsel-check</div>
       <div>Jaap Leemeijer · BIG: 09925473804 · Psychosomatische fysiotherapie</div>
+      <div><button type="button" class="cookie-heropen" hidden>Cookievoorkeur wijzigen</button></div>
     </footer>
 
+  </div>
+
+  <!-- Toestemmingsbalk. Blokkeert niets: de test werkt met of zonder. -->
+  <div class="cookiebalk" role="region" aria-label="Cookievoorkeur" hidden>
+    <div class="cookiebalk-in">
+      <p class="cookiebalk-tekst">
+        Mogen we anoniem tellen hoe vaak deze test gestart en afgerond wordt?
+        <strong>Je antwoorden blijven hoe dan ook op deze pagina</strong> — nooit
+        opgeslagen, nooit verzonden.
+        <a href="https://www.psychosomatischefysio.nl/cookie-en-trackingbeleid" target="_blank" rel="noopener">Cookiebeleid</a>
+      </p>
+      <div class="cookiebalk-knoppen">
+        <button type="button" class="cookie-nee">Liever niet</button>
+        <button type="button" class="cookie-ja">Prima</button>
+      </div>
+    </div>
   </div>
 
   <!-- ============================================================
@@ -1438,15 +1607,88 @@
              || window.doNotTrack === '1'
              || navigator.msDoNotTrack === '1';
 
+    /* ----- Toestemming -------------------------------------------------
+       gtag.js wordt pas ingeladen als de bezoeker ja zegt. Tot dat moment
+       parkeert de stub in de head elk event in dataLayer; gebeurt er niets,
+       dan blijft die wachtrij gewoon in het geheugen staan en verlaat er
+       niets de browser.
+
+       De keuze staat in localStorage, niet in een cookie. Een cookie
+       plaatsen om te onthouden dat iemand géén cookies wil, is precies
+       het soort ding waar deze pagina niet aan mee moet doen.           */
+    const BEWAARSLEUTEL = 'zs-toestemming';
+
+    function lees() {
+      try { return localStorage.getItem(BEWAARSLEUTEL); } catch (e) { return null; }
+    }
+    function schrijf(waarde) {
+      try { localStorage.setItem(BEWAARSLEUTEL, waarde); } catch (e) { /* private mode */ }
+    }
+
+    let gtagGeladen = false;
+    function laadGtag() {
+      if (gtagGeladen) return;
+      gtagGeladen = true;
+      const sc = document.createElement('script');
+      sc.async = true;
+      sc.src = 'https://www.googletagmanager.com/gtag/js?id=G-70V3CY4G1B';
+      document.head.appendChild(sc);
+    }
+
+    function toestemmingGeven() {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted',
+        functionality_storage: 'granted'
+        // Advertentie-toestemmingen blijven geweigerd. Hier wordt niets
+        // geadverteerd en er is geen reden om die deur open te zetten.
+      });
+      laadGtag();
+    }
+
+    const balk    = document.querySelector('.cookiebalk');
+    const heropen = document.querySelector('.cookie-heropen');
+
+    function toonBalk() { if (balk) balk.hidden = false; }
+    function verbergBalk(){ if (balk) balk.hidden = true; if (heropen) heropen.hidden = false; }
+
+    function kies(antwoord) {
+      schrijf(antwoord);
+      if (antwoord === 'ja') toestemmingGeven();
+      verbergBalk();
+    }
+
+    if (balk) {
+      const keuze = lees();
+      if (keuze === 'ja')        { toestemmingGeven(); if (heropen) heropen.hidden = false; }
+      else if (keuze === 'nee')  { if (heropen) heropen.hidden = false; }
+      else if (dnt)              { /* Do Not Track telt als een nee. Niet vragen. */ }
+      else                       { toonBalk(); }
+
+      const ja  = balk.querySelector('.cookie-ja');
+      const nee = balk.querySelector('.cookie-nee');
+      if (ja)  ja.addEventListener('click',  () => kies('ja'));
+      if (nee) nee.addEventListener('click', () => kies('nee'));
+      if (heropen) heropen.addEventListener('click', () => {
+        if (balk) balk.hidden = false;
+        heropen.hidden = true;
+      });
+    }
+
     window.zsTrack = function (event, props) {
       if (dnt) return;
+      // Bij een expliciet 'nee' wordt er niets in de wachtrij gezet.
+      if (lees() === 'nee') return;
       try {
+        // Volgorde telt. Bij gtag.js bestaan window.gtag én window.dataLayer.
+        // Een ruwe dataLayer.push levert dan geen geldig GA4-event op; die
+        // tak is alleen bedoeld voor een opzet met uitsluitend GTM.
         if (typeof window.plausible === 'function') {
           window.plausible(event, props ? { props: props } : undefined);
-        } else if (Array.isArray(window.dataLayer)) {
-          window.dataLayer.push(Object.assign({ event: event }, props || {}));
         } else if (typeof window.gtag === 'function') {
           window.gtag('event', event, props || {});
+        } else if (Array.isArray(window.dataLayer)) {
+          window.dataLayer.push(Object.assign({ event: event }, props || {}));
         }
       } catch (e) {
         // Meten mag de site nooit breken.

@@ -272,6 +272,63 @@ bestaande pagina.
   zo was. Een onjuiste README is erger dan geen README.
 - **Status:** `gemeten` · agent zelfstandig
 
+### 21 — GA4 aangezet met toestemmingsbalk
+- **Beslissing Jaap:** GA4 op **dezelfde property als psychosomatischefysio.nl**
+  (`G-70V3CY4G1B`), met cross-domain tracking, en een cookiebanner op de koop
+  toe. Gekozen boven Plausible omdat de attributie zwaarder weegt dan de balk.
+- **Correctie op eerder advies:** ik schreef eerder dat een aparte property
+  nodig was om de controlegroep schoon te houden. Dat klopte niet — de
+  controlegroep-vergelijking uit brief §5 draait op Search Console, en dat zijn
+  al twee losse properties. GA4 raakt daar niets aan. De echte afweging ging
+  over attributie, niet over besmetting.
+- **Wat het oplevert:** cross-domain houdt de client_id vast bij de sprong naar
+  de praktijksite. Daarmee is voor het eerst op gebruikersniveau te volgen of
+  iemand na de test ook echt contact opneemt — de zwakste schakel uit
+  `data/baseline.md` §3.
+- **Wat het kost:** verkeer van zenuwstelsel.com loopt vanaf nu mee in de
+  standaardrapporten van psychosomatischefysio.nl. Filteren op `hostname` is
+  voortaan verplicht bij elke rapportage.
+- **Status:** `open` — cross-domain moet Jaap nog in de GA4-beheeromgeving
+  aanzetten · beslissing Jaap, uitwerking agent
+
+### 22 — toestemmingsbalk gebouwd
+- **Ontwerp:** `gtag.js` wordt niet geladen tot de bezoeker ja zegt. In de head
+  staat alleen een stub die events in `dataLayer` parkeert, plus Consent Mode v2
+  met alles op `denied`. Bij een nee wordt het script nooit geladen: geen
+  cookies, geen cookieloze pings, geen modelled data. Bij een ja laadt gtag en
+  worden de geparkeerde events alsnog verwerkt, zodat een bezoeker die eerst de
+  test doet en dan accepteert niet half gemeten wordt.
+- **Keuzes die ertoe doen:**
+  - Geen modaal venster maar een balk onderaan. Een modaal zou als eerste ding
+    tussen de bezoeker en de test gaan staan, en de test is de conversiemotor.
+  - Weigeren is even makkelijk als accepteren: zelfde grootte, zelfde plek,
+    alleen een rustiger vlak. Geen donker patroon.
+  - De keuze staat in `localStorage`, niet in een cookie. Een cookie plaatsen om
+    te onthouden dat iemand géén cookies wil, past niet bij deze pagina.
+  - Advertentie-toestemmingen blijven altijd `denied`.
+  - Do Not Track telt als een nee: dan wordt er niet eens gevraagd.
+- **Mobiel bijgesteld na meting:** de eerste versie besloeg 25% van het scherm
+  en bedekte vraag 1. Kortere tekst, 13px en krappere padding brachten dat terug
+  naar 17%; vraag 1 is nu volledig leesbaar boven de balk. Desktop: 10%.
+- **Gemeten:** vijf scenario's in de browser — geen keuze, weigeren, accepteren,
+  herbezoek, en DNT. Alle vijf correct, geen JS-fouten.
+- **Hypothese (master prompt §4):** de balk kost enkele procenten
+  testafronding, en dat is het waard omdat er zonder meting niets te sturen
+  valt. Meetbaar zodra er data is. Valt het tegen, dan is Plausible het
+  alternatief — de instrumentatielaag ondersteunt dat zonder codewijziging.
+- **Status:** `open` — meetperiode start zodra er verkeer is · agent zelfstandig
+
+### 23 — dispatch-volgorde gecorrigeerd
+- **Probleem:** de tracker controleerde `Array.isArray(window.dataLayer)` vóór
+  `typeof window.gtag`. Met gtag.js bestaan beide, dus zou elk event via een
+  ruwe `dataLayer.push` gaan — en dat levert géén geldig GA4-event op. Alle
+  events waren stil verdwenen.
+- **Opgelost:** volgorde is nu plausible → gtag → dataLayer. De ruwe
+  dataLayer-tak blijft alleen over voor een opzet met uitsluitend GTM.
+- **Gevonden door:** het uitschrijven van de GA4-integratie, niet door een test.
+  De browsertest zou dit ook niet gepakt hebben zonder echte gtag.js.
+- **Status:** `gemeten` · agent zelfstandig
+
 ---
 
 ## Niet gedaan, bewust
