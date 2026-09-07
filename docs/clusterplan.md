@@ -1,11 +1,11 @@
 # Clusterplan — zenuwstelsel.com
 
 **Opgesteld:** 7 september 2026 (run 01)
-**Status:** *voorstel, wacht op akkoord van Jaap*
-**Belangrijk:** deze rangschikking is gemaakt **zonder GSC-data**. Master
-prompt §6 eist validatie tegen echte queries vóór er geschreven wordt. Dat kan
-nu niet. Wat hier staat is gebaseerd op SERP-observatie en op de logica van de
-brief — niet op zoekvolume. Zodra GSC binnen is, wordt deze volgorde herzien.
+**Status:** *herzien op 2026-09-07 na de eerste GSC-meting en Jaaps keuze voor
+optie A (splitsen).*
+
+Dit plan is nu gebaseerd op echte GSC-data, niet meer op vermoedens. Zie
+`docs/reports/2026-09-07-gsc-eerste-meting.md` voor de meting.
 
 ---
 
@@ -34,19 +34,60 @@ Die interne links bestaan nu nog niet. Ze komen erbij zodra de spokes er zijn.
 Gewogen op de primaire KPI (intakes), niet op verkeer. Een pagina die veel
 bezoekers trekt maar niemand naar een intake beweegt, staat laag.
 
+### De tweede grens: psychosomatischefysio.nl
+
+De brief kent één harde grens, die met burnout-help.nl. Uit de GSC-meting van
+7 september blijkt dat er een **tweede** grens nodig is, en die was niemand
+opgevallen: psychosomatischefysio.nl heeft al een zenuwstelsel-cluster dat
+rankt.
+
+| Bestaande pagina | Klikken (3 mnd) | Positie |
+|---|---|---|
+| `/een-ontregeld-zenuwstelsel` | 169 | 4,6 op de head-term |
+| `/sympatisch-en-parasympatisch-zenuwstelsel` | 13 | 18,3 |
+| `/hoe-het-parasympathisch-zenuwstelsel-werkt` | 10 | 14,3 |
+| `/de-nervus-vagus-uitgelegd` | 0 | 67,6 |
+| `/window-of-tolerance-nederlands` | — | 3,0 |
+
+**Jaap koos optie A: splitsen.** zenuwstelsel.com schrijft niet wat daar al
+staat en rankt. De regel is dezelfde als bij burnout-help.nl, maar dan om een
+andere reden — daar is het positionering, hier is het kannibalisatie van de
+eigen controlegroep.
+
+**Regel:** dekt psychosomatischefysio.nl een onderwerp al met een rankende
+pagina, dan schrijf je die pagina hier niet. Je linkt ernaar. Controleer dat
+per onderwerp in GSC vóór je begint, niet achteraf.
+
 ### Voorstel voor run 2 en verder
 
-| # | Pagina | Prioriteit | Waarom |
-|---|---|---|---|
-| 1 | **Werkt een ijsbad voor je nervus vagus?** | **hoog** | zie hieronder |
-| 2 | **Wat werkt echt en wat is hype** (evidence-hub) | **hoog** | het citeerbare bezit |
-| 3 | Wat is een ontregeld zenuwstelsel? | midden | de kernentiteit; fundament, geen instap |
-| 4 | De drie standen van je zenuwstelsel | midden | koppelt direct aan twee uitslagen |
-| 5 | Wanneer lukt zelfregulatie niet meer | midden | de brug naar behandeling — hoogste intake-intentie |
-| 6 | De 4-6 ademhaling | laag-midden | staat al deels op de homepage |
-| 7 | Polyvagaal-theorie: wat klopt | laag | kleine, kritische doelgroep |
-| 8 | Window of tolerance, eerlijk uitgelegd | laag | modelvraag, weinig klachtdruk |
-| 9 | Psychosomatische fysiotherapie Den Bosch (lokaal) | **apart spoor** | zie hieronder |
+| # | Pagina | Prioriteit | Overlap? | Waarom |
+|---|---|---|---|---|
+| 1 | **Werkt een ijsbad voor je nervus vagus?** | **hoog** | geen | het gat in de markt, zie hieronder |
+| 2 | **Wat werkt echt en wat is hype** (evidence-hub) | **hoog** | geen | het citeerbare bezit |
+| 3 | Polyvagaal-theorie: wat klopt, wat is populair-wetenschappelijk | midden | geen | kritische stem die nergens bestaat |
+| 4 | Wanneer lukt zelfregulatie niet meer | midden | geen | de brug naar behandeling — hoogste intake-intentie |
+| 5 | De 4-6 ademhaling | laag-midden | **controleren** | staat al deels op de homepage; check GSC vóór schrijven |
+| 6 | Psychosomatische fysiotherapie Den Bosch (lokaal) | **apart spoor** | geen | zie hieronder |
+
+### Vervallen onder optie A — linken in plaats van schrijven
+
+| Onderwerp | Verwijst naar |
+|---|---|
+| Wat is een ontregeld zenuwstelsel? | `/een-ontregeld-zenuwstelsel` |
+| De drie standen van je zenuwstelsel | `/sympatisch-en-parasympatisch-zenuwstelsel` |
+| Window of tolerance | `/window-of-tolerance-nederlands` |
+| Nervus vagus, anatomie en functie | `/de-nervus-vagus-uitgelegd` |
+
+Dit kost wat: de test-uitslagen verwijzen straks voor twee van de vier standen
+naar een andere site. Dat is de prijs van een schone meting, en het is
+omkeerbaar als Jaap later alsnog voor optie B (verhuizen met 301's) kiest.
+
+**Let op bij het leggen van die links:** contentlinks naar
+psychosomatischefysio.nl vuren `zs_uitgaande_link`, geen `zs_cta_klik`. Dat
+onderscheid zit sinds 7 september in de instrumentatie en hangt aan de
+knopklassen (`btn-primary` / `btn-inline`). Geef een contentlink dus **nooit**
+zo'n klasse, anders telt elke verwijzing in de lopende tekst mee als
+intake-intentie en zijn de trechtercijfers waardeloos.
 
 ### Waarom 1 en 2 bovenaan staan
 
@@ -73,8 +114,19 @@ concurrenten niet kunnen kopiëren, en het is precies wat AI-systemen citeren:
 een bron die een claim durft af te zwakken.
 
 **Kanttekening:** de gebruikte zoekmachine is US-gelokaliseerd. De echte
-Nederlandse SERP kan afwijken. Dit is richting, geen bewijs — en een extra
-reden om GSC binnen te halen vóór er geschreven wordt.
+Nederlandse SERP kan afwijken. Dit is richting, geen bewijs.
+
+**Wat GSC hieraan toevoegt (7 september):** `nervus vagus`-queries leveren op
+psychosomatischefysio.nl 10 klikken en 652 impressies per maand op —
+zes keer minder dan de zenuwstelsel-queries (64 klikken, 3.378 impressies).
+Het ijsbad-onderwerp is dus **geen volumespel**. Het staat bovenaan omdat het
+het enige onderwerp is waar een BIG-geregistreerde stem ontbreekt én waar
+psychosomatischefysio.nl niets heeft — niet omdat er veel verkeer op zit.
+
+Voor de T+9-drempel van 1.500 organische bezoekers per maand zal het volume
+elders vandaan moeten komen. Dat is een open vraag voor de volgende meting,
+en eerlijk gezegd het grootste risico in de hele opzet: de nis is
+aantoonbaar echt, maar aantoonbaar klein.
 
 ### Waarom de lokale pagina een apart spoor is
 
@@ -131,11 +183,16 @@ Geldt voor elke spoke, zonder uitzondering:
 
 ---
 
-## Openstaande vraag aan Jaap
+## Status en volgende stap
 
-**Is dit clusterplan akkoord, en mag run 2 beginnen met schrijven?**
+Het clusterplan is akkoord op hoofdlijn en de scope-vraag is beslist (optie A).
+GSC is aangesloten, maar heeft voor zenuwstelsel.com nog **geen enkele rij** —
+de property is op 7 september geverifieerd en er is geen backfill.
 
-Master prompt §8.10 zegt: eerst akkoord, dan schrijven. Mijn advies is om nog
-niet te schrijven — niet vanwege het plan, maar omdat GSC ontbreekt. Elke
-pagina die nu geschreven wordt, is geschreven op vermoedens. Eén week wachten
-op GSC-toegang kost minder dan een cluster dat op de verkeerde queries mikt.
+**Advies: run 2 wacht tot er GSC-data over zenuwstelsel.com zelf is**, rond
+14 september. Dan is te zien op welke queries de site al impressies krijgt en
+of hij geïndexeerd is. Dat is precies de validatie die master prompt §6 eist
+vóór er geschreven wordt.
+
+Wat er in de tussentijd wél kan: de analytics-provider aanzetten, zodat de
+trechter gaat tellen zodra er verkeer is.
