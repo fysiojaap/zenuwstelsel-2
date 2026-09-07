@@ -128,6 +128,35 @@ bestaande pagina.
   Dat kan alleen als hij in de repo staat. De brief is leidend bij conflict.
 - **Status:** `gemeten` (organisatorisch, niet meetbaar) · agent zelfstandig
 
+### 11 — GSC-verificatie onderzocht, DNS-record blijkt te ontbreken
+- **Bevinding:** Jaap leverde het verificatietoken
+  `google-site-verification=n7hoYD8EUsSv5-KKD9zFEAp7IhW6KqOCBjbzaC6eRqo` aan.
+  Controle via twee onafhankelijke resolvers (Cloudflare en Google DoH) laat
+  zien dat `zenuwstelsel.com` **geen enkele TXT-record** heeft. Het token is
+  in Search Console aangemaakt maar nooit in DNS gezet; verificatie zou dus
+  mislukken.
+- **Nameservers:** `byte.dns-parking.com` / `pixel.dns-parking.com` — DNS wordt
+  bij Hostinger beheerd.
+- **Actie:** `docs/gsc-setup.md` toegevoegd met de exacte record-instelling en
+  de juiste volgorde (eerst run 01 naar `main`, dan verifiëren, dan sitemap
+  indienen — een sitemap indienen die 404 geeft levert een fout op).
+- **Status:** `geblokkeerd` — wacht op Jaap · agent zelfstandig
+
+### 12 — intakevraag uitgewerkt (P0 uit brief §6.3)
+- **Wijziging:** `docs/intakevraag.md` — exacte vraagstelling, turflijst voor
+  tien intakes, en vooraf vastgelegde leesregels.
+- **Hypothese:** aanname A (zoekt de doelgroep ook echt zo?) is de riskantste
+  van het experiment. GSC beantwoordt hem pas over maanden en alleen voor wie
+  de site al vond; tien intakes beantwoorden hem binnen een maand voor
+  iedereen.
+- **Waarom de leesregels vooraf vastliggen:** anders wordt achteraf elke
+  uitkomst goedgepraat. Bij 0 van de 10 is er een echt signaal dat het woord
+  pas in de behandelkamer ontstaat, en dat moet dan besproken worden vóór T+3.
+- **Verwachte impact:** geen directe conversie-impact; bepaalt wel of het
+  cluster op de entiteit of op klachttaal gebouwd moet worden.
+- **Status:** `open` — kan morgen beginnen, is nergens van afhankelijk ·
+  agent zelfstandig
+
 ---
 
 ## Niet gedaan, bewust

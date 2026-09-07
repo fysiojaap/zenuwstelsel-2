@@ -89,6 +89,8 @@ an agent against a written brief. Read these before changing anything:
 - Master prompt for the agent: `docs/master-prompt.md`
 - Cluster plan: `docs/clusterplan.md`
 - Instrumentation and attribution: `docs/instrumentatie.md`
+- Search Console setup (blocked on a missing DNS record): `docs/gsc-setup.md`
+- The intake question that tests the riskiest assumption: `docs/intakevraag.md`
 - Run reports: `docs/reports/`
 
 Hard rule from the brief: once burn-out or overspanning becomes a page's main
