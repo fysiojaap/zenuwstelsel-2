@@ -11,10 +11,10 @@ zonder dat het als schatting gemarkeerd staat.
 
 | Metric | Waarde op 2026-09-07 | Bron | Betrouwbaarheid |
 |---|---|---|---|
-| Organische klikken / maand | **ontbreekt** | — | geen GSC-toegang, zie §4 |
-| Impressies / maand | **ontbreekt** | — | geen GSC-toegang |
-| Gemiddelde positie | **ontbreekt** | — | geen GSC-toegang |
-| Geïndexeerde pagina's | **ontbreekt** | — | geen GSC-toegang |
+| Organische klikken / maand | **0 rijen** | GSC | property vandaag geverifieerd; geen backfill |
+| Impressies / maand | **0 rijen** | GSC | idem |
+| Gemiddelde positie | **geen data** | GSC | idem |
+| Geïndexeerde pagina's | **0 van 1** | GSC sitemaps | sitemap opgehaald 06:34, 0 fouten |
 | Teststarts / maand | **0 gemeten** | — | instrumentatie bestond niet vóór vandaag |
 | Testafrondingen / maand | **0 gemeten** | — | idem |
 | Afrondingspercentage | **ontbreekt** | — | idem |
@@ -51,12 +51,34 @@ De site stond dus ruim vier maanden ongewijzigd en ongemeten live.
 
 ## 2. Controlegroep: psychosomatischefysio.nl
 
+Gemeten in GSC op 2026-09-07, over juni t/m augustus 2026:
+
 | Metric | Waarde | Bron | Betrouwbaarheid |
 |---|---|---|---|
-| Bezoekers / maand | ~2.000 | eigen opgave Jaap | niet geverifieerd |
+| Organische klikken / maand | **2.275** | GSC | gemeten |
+| Impressies / maand | **166.850** | GSC | gemeten |
+| CTR | **1,36%** | GSC | gemeten |
+| Gemiddelde positie | **13,2** | GSC | gemeten |
 | Gratis intakes jan–sep 2026 | 125 (~15,6 / maand) | eigen opgave Jaap | niet geverifieerd |
-| Impliciete conversie | ~0,7% | afgeleid uit bovenstaande | **afgeleid, niet gemeten** |
-| GSC-trend | **ontbreekt** | — | geen GSC-toegang |
+| Conversie klik → intake | **0,69%** | 15,6 / 2.275 | afgeleid uit één gemeten en één opgegeven getal |
+
+Per maand: juni 2.144 klikken · juli 2.397 · augustus 2.285.
+
+**Jaaps schatting klopt.** ~2.000 bezoekers per maand was een goede
+inschatting (werkelijk 2.275), en de afgeleide conversie van ~0,7% klopt
+op 0,69%. De baseline uit de brief hoeft niet bijgesteld te worden.
+
+**Twee dingen die de brief niet wist:**
+
+1. De site staat gemiddeld op **positie 13,2** — pagina 2 — met 167.000
+   impressies per maand en een CTR van 1,36%. Grote impressiebasis, weinig
+   klikken.
+2. Het verkeer is grotendeels **niet-koopbaar**: de grootste queries zijn
+   `spierreuma ervaringen`, `degeneratieve veranderingen`, `emoties lijst`,
+   `dopamine tekort`, `aardbeien ontstekingsremmend`. Informatieverkeer dat
+   vrijwel zeker geen intake oplevert. Dat verklaart de 0,69% conversie en
+   onderbouwt de premisse van zenuwstelsel.com: gerichter is meer waard
+   dan meer.
 
 **Wel geverifieerd op 2026-09-07:** de site draait GA4 (property-id's
 `G-70V3CY4G1B` en `G-6WBKRW6390`) en Google Tag Manager (`GTM-MPMNRTG4`).
@@ -88,18 +110,45 @@ primaire KPI alleen te vullen via de intakevraag uit brief §6.3.
 
 ---
 
-## 4. Blokkade: Google Search Console
+## 4. Google Search Console — opgelost op 2026-09-07
 
-Er is op 2026-09-07 **geen GSC-toegang** vanuit de agent. Zonder GSC:
+GSC-toegang is er. Beide properties zijn zichtbaar met `siteOwner`-rechten:
+`sc-domain:zenuwstelsel.com` en `https://www.psychosomatischefysio.nl/`. De
+controlegroep is dus niet alleen te vergelijken, maar ook direct te meten.
 
-- is de primaire verkeersbron van het experiment onmeetbaar (master prompt §1:
-  "Als GSC het niet laat zien, is het niet gebeurd");
-- kan de indexeringsstatus niet bevestigd worden;
-- kunnen de kandidaat-spokes niet tegen echte queries gevalideerd worden;
-- is er geen controlegroep-vergelijking mogelijk.
+De volledige eerste meting staat in
+`docs/reports/2026-09-07-gsc-eerste-meting.md`.
 
-Dit is de enige echte P0-blokkade van dit experiment. Zie het runrapport
-`docs/reports/2026-09-07-run-01.md` voor wat Jaap moet doen.
+## 4b. Aanname A — gemeten, en hij houdt stand
+
+De riskantste aanname uit de brief (§7.A: zoeken mensen ook echt zo?) is
+beantwoord met echte data uit de controlegroep, juni–augustus 2026:
+
+| Querygroep | Klikken / maand | Impressies / maand | CTR |
+|---|---|---|---|
+| bevat "zenuwstelsel" (60+ queries) | 64 | 3.378 | 1,90% |
+| bevat "vagus" (40 queries) | 10 | 652 | 1,48% |
+
+**Ja, de taal uit de behandelkamer bestaat ook in Google.** De head-term
+`ontregeld zenuwstelsel` staat op positie 4,6 met een CTR van 4,56% — ruim
+drie keer het sitegemiddelde. Wie dit intypt, klikt.
+
+Maar: samen is dit 3,3% van de klikken van de site. Een echte nis, geen
+goudmijn. En "zenuwstelsel" is zes keer zo groot als "vagus" — wat de regel
+uit brief §8 bevestigt met een getal: bind aan de entiteit, niet aan het
+modewoord.
+
+## 4c. Openstaand risico: kannibalisatie van de controlegroep
+
+psychosomatischefysio.nl heeft **al** een zenuwstelsel-cluster dat rankt —
+onder meer `/een-ontregeld-zenuwstelsel` (169 klikken in drie maanden,
+positie 4,6 op de head-term), plus pagina's over sympathisch/parasympathisch,
+de nervus vagus en window of tolerance.
+
+Drie geplande spokes van zenuwstelsel.com dupliceren die. Dat maakt de
+controlegroep onzuiver en kan winst op zenuwstelsel.com verwarren met
+verplaatst verkeer. **Beslissing van Jaap nodig vóór run 2 begint te
+schrijven.** Zie het GSC-rapport §4.
 
 ---
 

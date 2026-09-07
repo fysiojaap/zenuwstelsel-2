@@ -157,6 +157,48 @@ bestaande pagina.
 - **Status:** `open` — kan morgen beginnen, is nergens van afhankelijk ·
   agent zelfstandig
 
+### 13 — run 01 live, deploy-pijplijn gerepareerd
+- **Bevinding:** de git-deploy van Hostinger werkte niet. De live site draaide
+  de build van 2026-04-25 terwijl `main` al maanden verder was. Oorzaak lag aan
+  de hostingkant (SSH/deploy-key en de ontbrekende webhook), niet in de repo.
+- **Opgelost door Jaap:** deploy-key en webhook toegevoegd, SSH geactiveerd.
+- **Geverifieerd op de live site:** payload byte-identiek aan `build/index.html`,
+  robots.txt en sitemap.xml geven 200, www- en `/index.html`-redirects vuren,
+  bronbestanden (`/CHANGELOG.md`, `/docs/`, `/tests/`, `/data/`, `/sync.sh`)
+  geven allemaal 404, testflow werkt zonder JS-fouten, negen events zonder
+  antwoordwaarden.
+- **Status:** `gemeten` · Jaap (hosting) + agent (verificatie)
+- **Les:** een stille deploy-storing is de gevaarlijkste faalmodus van dit
+  experiment — commit landt, site verandert niet, niemand merkt het. Vermoedelijk
+  de reden dat de site vier maanden bevroren stond.
+
+### 14 — GSC verbonden, eerste meting gedaan
+- **Wijziging:** Search Console gekoppeld. Beide properties met siteOwner-rechten:
+  `sc-domain:zenuwstelsel.com` en `psychosomatischefysio.nl`.
+- **Gemeten:** controlegroep-baseline (2.275 klikken/maand, 166.850 impressies,
+  CTR 1,36%, positie 13,2) en aanname A (64 klikken/maand op
+  "zenuwstelsel"-queries, head-term op positie 4,6 met 4,56% CTR).
+- **Uitkomst:** Jaaps schattingen kloppen — ~2.000 bezoekers en ~0,7% conversie
+  waren goed geraden. De baseline uit de brief hoeft niet bijgesteld.
+- **Sitemap:** ingediend en opgehaald, 0 fouten, 0 waarschuwingen.
+- **Status:** `gemeten` · agent zelfstandig
+- **Rapport:** `docs/reports/2026-09-07-gsc-eerste-meting.md`
+
+### 15 — kannibalisatierisico gevonden, run 2 tegengehouden
+- **Bevinding:** psychosomatischefysio.nl heeft al een rankend
+  zenuwstelsel-cluster (`/een-ontregeld-zenuwstelsel` op positie 4,6 voor de
+  head-term, plus sympathisch/parasympathisch-, nervus vagus- en window of
+  tolerance-pagina's). Drie geplande spokes van zenuwstelsel.com dupliceren die.
+- **Waarom dit telt:** de brief trekt één harde grens — die met burnout-help.nl —
+  maar niemand heeft gecontroleerd of de controlegroep zelf al op dit terrein
+  zat. Dat doet hij. Daarmee is de controlegroep uit brief §5 niet schoon, en
+  kan winst op zenuwstelsel.com in werkelijkheid verplaatst verkeer zijn.
+- **Actie:** geen. Master prompt §10 verbiedt wijzigingen aan
+  psychosomatischefysio.nl en schrijft voor te stoppen en te vragen bij twijfel
+  over de grens. Er wordt geen spoke geschreven die met een bestaande pagina
+  concurreert tot Jaap kiest.
+- **Status:** `geblokkeerd` — wacht op beslissing · agent zelfstandig
+
 ---
 
 ## Niet gedaan, bewust
