@@ -13,8 +13,11 @@ files at the root, `tests/`, `docs/`, and `.git/` all 404.
 
 To ship a change:
 
-1. Edit `index.html` / `favicon.svg` at the repo root.
-2. Mirror them into `build/` (`cp index.html favicon.svg build/`).
+1. Edit the source files at the repo root (`index.html`, `favicon.svg`,
+   `robots.txt`, `sitemap.xml`).
+2. Run `./sync.sh` to mirror them into `build/`. Forgetting this is the
+   classic failure: the commit lands, the live site doesn't change.
+   `./sync.sh --check` fails if `build/` is behind.
 3. Commit and push to `main`.
 4. Hostinger picks up the new commit and redeploys.
 
@@ -25,14 +28,17 @@ cache static assets.
 ### Repo layout
 
 ```
-.htaccess        — Apache rewrite: routes every request into build/
+.htaccess        — Apache: canonical 301s, then rewrite into build/
+sync.sh          — mirrors source files into build/
 index.html       — source-of-truth markup (edit here)
-favicon.svg      — source-of-truth icon (edit here)
-build/
-├── index.html   — deployed copy (mirror of root, served by Hostinger)
-└── favicon.svg  — deployed copy
+favicon.svg      — source-of-truth icon
+robots.txt       — source-of-truth
+sitemap.xml      — source-of-truth
+build/           — deployed copy of the four files above (served by Hostinger)
 tests/           — local-only, not deployed
-docs/            — specs and plans, not deployed
+data/            — baseline and AI-query measurements, not deployed
+docs/            — brief, master prompt, plans, run reports; not deployed
+CHANGELOG.md     — every change: hypothesis, expected impact, measured result
 ```
 
 The whole production payload is just two files. No CSS/JS bundles, no
@@ -59,10 +65,36 @@ cases.
 - Visual tokens → CSS custom properties in the `:root` block near the top
   of `index.html`.
 
-## External link
+## External link and attribution
 
-Primary CTA and all four result CTAs point at
+The primary CTA and all four result CTAs point at
 `https://www.psychosomatischefysio.nl/neem-contact-op` (external intake).
+Each carries UTM parameters with a campaign per result type, so the receiving
+GA4 can tell which result copy actually moves people. Do not strip them —
+without UTMs the experiment's primary KPI is unmeasurable.
+
+## Measurement
+
+The funnel is instrumented but **dormant**: it needs an analytics provider on
+the page before anything is counted. See `docs/instrumentatie.md` for what is
+measured (behaviour, never answers) and how to switch it on.
+
+## The experiment
+
+This site is a time-boxed experiment with a decision point in June 2027, run by
+an agent against a written brief. Read these before changing anything:
+
+- Brief (leading; wins over the master prompt on conflict):
+  `docs/zenuwstelsel-experiment-brief.md`
+- Master prompt for the agent: `docs/master-prompt.md`
+- Cluster plan: `docs/clusterplan.md`
+- Instrumentation and attribution: `docs/instrumentatie.md`
+- Search Console setup (blocked on a missing DNS record): `docs/gsc-setup.md`
+- The intake question that tests the riskiest assumption: `docs/intakevraag.md`
+- Run reports: `docs/reports/`
+
+Hard rule from the brief: once burn-out or overspanning becomes a page's main
+subject, it does not belong here — link to burnout-help.nl instead.
 
 ## Spec and plan
 
