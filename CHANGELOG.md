@@ -354,6 +354,53 @@ bestaande pagina.
   turflijst belangrijker dan hij bij het opstellen leek.
 - **Status:** `gemeten` · agent zelfstandig
 
+### 25 — copy herschreven met de stop-slop-methode
+- **Opdracht:** expliciet van Jaap. Daarmee vervalt de rem uit brief §9 op het
+  aanpassen van converterende elementen.
+- **Waarom nu:** master prompt §4 eist één trechterwijziging tegelijk met twee
+  weken meettijd. Er lóópt nog geen meting (de analytics-PR is niet gemerged),
+  dus dit is het enige moment waarop een volledige herschrijving gratis is.
+  Na de start van de meting was dit zes losse experimenten geweest.
+- **Gemeten vóór:** 33 em-dashes, 5 "geen X, wel Y"-contrasten, 30 losse
+  punch-zinnen onder de zes woorden. Score 26/50 op de stop-slop-dimensies
+  (directheid 6, ritme 4, vertrouwen 7, echtheid 4, dichtheid 5).
+- **Gemeten ná:** 0 em-dashes, 3 contrasten (bewust behouden, zie hieronder),
+  15 korte zinnen. Zinslengte varieert nu van 3 tot 84 woorden.
+- **Bewust níet weggehaald:** de contrastconstructies die therapeutisch werk
+  doen, zoals de geruststelling na een uitslag. De brief noemt de toon
+  ("je gevoel klopt, de oplossingen zijn te klein") expliciet de
+  conversiemotor. Stop-slop mechanisch toepassen zou die warmte wegpoetsen.
+  De constructies zijn herschreven, niet geschrapt: "Het is geen zwakte" werd
+  "Dat zegt niets over hoe sterk je bent".
+- **Status:** `open` — effect op afronding meetbaar zodra er verkeer is ·
+  opdracht Jaap, uitwerking agent
+
+### 26 — onhoudbare bewering over koude verwijderd
+- **Wat er misging:** bij het herschrijven zette ik "het effect houdt ongeveer
+  een kwartier aan" op de pagina, gebaseerd op een samenvatting van een
+  zoekmachine en niet op een bron die ik zelf gelezen had.
+- **Gecontroleerd in PubMed:** de meta-analyse die daar het dichtst bij komt
+  (Laborde e.a. 2023, *Clin Physiol Funct Imaging*,
+  doi:10.1111/cpf.12855) gaat over **herstel van sporters na inspanning**, en
+  vindt daar juist een matig tot groot positief effect van koud water op
+  vagaal gemedieerde HRV. Over een tijdsduur van een kwartier staat er niets,
+  en de onderzochte groep is een andere.
+- **Aangepast naar wat wél klopt:** het onderzoek gaat over gezonde sporters na
+  een training, niet over een langdurig ontregeld zenuwstelsel. Die
+  nuance is eerlijker én scherper dan het oude "vaak té activerend" — en het
+  is precies het onderscheid dat een ijsbadverkoper nooit zal maken.
+- **Les:** master prompt §10 verbiedt verzonnen cijfers. Een getal uit een
+  zoekresultaat is nog geen bron.
+- **Status:** `gemeten` · agent zelfstandig
+
+### 27 — auteur en herzieningsdatum zichtbaar op de pagina
+- **Wijziging:** de footer noemt nu auteur, functie, plaats, BIG-nummer en de
+  datum van laatste herziening, met een `<time datetime>`-element.
+- **Waarom:** master prompt §6 eist dit op elke pagina. Het stond wel in de
+  schema-data maar was nergens zichtbaar, en juist voor AI-systemen en lezers
+  telt de zichtbare variant mee.
+- **Status:** `gemeten` · agent zelfstandig
+
 ---
 
 ## Niet gedaan, bewust
